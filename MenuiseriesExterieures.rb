@@ -105,6 +105,15 @@ module Menuiseries
     @decalageSeuilAlu = @hauteurSeuilAlu - @bateeLarg + @jeu #1.4.cm
   end
 
+  # class FenetreSimpleOuvrant
+  # class FenetreDoubleOuvrant
+  # class PorteFenetreSimpleOuvrant
+  # class PorteFenetreDoubleouvrant
+  # => Pour chaque cas :
+  #    - imposte
+  #    - allege
+  #    - imposte + allege
+
   def self.calcul_dimension
       # calcul des dimensions de longueurs des differentes pieces
       @hautExt = @tableauHaut + @boisBatiLarg - @cochonnet
@@ -146,41 +155,8 @@ module Menuiseries
       @decalageOuvrantExtBati = @boisBatiLarg - @bateeLarg - @bateeLarg + @jeu + (@boisLarg / 2)    
       @decalageOuvrantRapplique = @boisEp - @bateeLong + @jeu
   end
-
-  def self.afficher_dimensions
-   UI.messagebox("Largeur tableau = #{@tableauLarg}\n, Hauteur tableau = #{@tableauHaut}\n, Hauteur Imposte = #{@data[:@imposteHauteur]}\n, Nombre ouvrant = #{@nombreOuvrant}\n, Porte fenetre = #{@porteFenetre}")
-  end
-
-  # Fonction pour modifier les dimensions du tableau via une boîte de dialogue
-  def self.tarification
-    prompts = ["Tarif bois 63x86 :", "Tarif vitrage :", "Tarif cremone :", "Tarif charnieres :", "Tarif seil alu :""Tarif jet d'eau :"]
-    #UI.messagebox(@data[:@tableauHaut])
-    if @data[:@tarifBois] == 0 then
-      defaults = [@tarifBois, @tarifVitrage, @tarifCremone, @tarifCharnieres, @tarifSeuilAlu, @tarifJetDEau]
-    else
-      defaults = [@data[:@tarifBois], @data[:@tarifVitrage], @data[:@tarifCremone], @data[:@tarifCharnieres], @data[:@tarifSeuilAlu], @data[:@tarifJetDEau]]
-    end
-
-    listes = ["Sapin|Bois exotique|Chataigner|chêne", "4 - 6 - 4|4 - 16 - 4|4 - 4 - 16 - 4", "", "", "", ""]
-    results = UI.inputbox(prompts, defaults, listes, "Tarification")
-    # @porteFenetre = results[4].to_s.strip
-    #UI.messagebox(results)
-    if results == nil || results == false then
-      return false
-    else
-      #@data = {} # stockage persistant dans le module
-      @data[:@tarifBois] = results[0]
-      @data[:@tarifVitrage] = results[1]
-      @data[:@tarifCremone] = results[2]
-      @data[:@tarifCharnieres] = results[3]
-      @data[:@tarifSeuilAlu] = results[4]
-      @data[:@tarifJetDEau] = results[5]
-    end # if
-   #  return unless results # si annulation
-   ##  @tableauHaut, @tableauLarg, @imposteHauteur, @nombreOuvrant, @porteFenetre = results.map(&:to_f)
-  end #dimension_tableau
   
-  def self .info_composant(refComposant, typeDeProfil, prixUnit, unite, longDuProfil)
+  def self.info_composant(refComposant, typeDeProfil, prixUnit, unite, longDuProfil)
     # Réveiller le composant dynamique# Réveille le moteur DC (indispensable)
     refComposant.set_attribute("dynamic_attributes", "lenx_formula", " = LenX")
     refComposant.set_attribute("dynamic_attributes", "_lenx_access", "VIEW")
@@ -211,13 +187,10 @@ module Menuiseries
     refComposant.set_attribute("dynamic_attributes", "_type_de_profil_label", "Type De Profil")
 
     refComposant.set_attribute("dynamic_attributes", "_lastmodified", Time.now.to_i)
-    Sketchup.send_action("showComponentOptions:")
-  end #info_composant
+    # Sketchup.send_action("showComponentOptions:")
+  end
   
-  def self.profilUneBatee(nom, lg, nom2, angleRotation, destination_point)
-    model = Sketchup.active_model
-    definition = model.definitions.add(nom)
-    # Points du profil"Bati : 1 batée
+  def self.pointsProfilUneBatee()
     pts = []
     pts[0] = Geom::Point3d.new(0, 0, 0)
     pts[1] = Geom::Point3d.new(0, @boisEp, 0)
@@ -228,7 +201,60 @@ module Menuiseries
     pts[6] = Geom::Point3d.new(@boisBatiLarg, @boisEp - @bateeLong, )
     pts[7] = Geom::Point3d.new(@boisBatiLarg, 0, 0)
     pts[8] = Geom::Point3d.new(0, 0, 0)
-    # pts = [[0, 0, 0], [100, 0, 0], [100, 100, 0], [0, 100, 0]]
+    return pts
+  end
+
+  def self.pointsProfilDeuxBateesOpposees()
+    pts = []
+    pts[0] = Geom::Point3d.new(@bateeLarg, 0, 0)
+    pts[1] = Geom::Point3d.new(@bateeLarg, @bateeLong - @jointRainEp, 0)
+    pts[2] = Geom::Point3d.new(@bateeLarg + @jointRainProf, @bateeLong - @jointRainEp, 0)
+    pts[3] = Geom::Point3d.new(@bateeLarg + @jointRainProf, @bateeLong, 0)
+    pts[4] = Geom::Point3d.new(0, @bateeLong, 0) 
+    pts[5] = Geom::Point3d.new(0, @boisEp, 0)
+    pts[6] = Geom::Point3d.new(@boisLarg - @bateeLarg, @boisEp, 0)
+    pts[7] = Geom::Point3d.new(@boisLarg - @bateeLarg, @boisEp - @bateeLong + @jointRainEp, )
+    pts[8] = Geom::Point3d.new(@boisLarg - @bateeLarg - @jointRainProf, @boisEp - @bateeLong + @jointRainEp, 0)
+    pts[9] = Geom::Point3d.new(@boisLarg - @bateeLarg - @jointRainProf, @boisEp - @bateeLong, 0)
+    pts[10] = Geom::Point3d.new(@boisLarg, @boisEp - @bateeLong, )
+    pts[11] = Geom::Point3d.new(@boisLarg, 0, 0)
+    return pts
+  end
+
+  def self.pointsProfilDeuxBateesSymetriques()
+    pts = []
+    pts[0] = Geom::Point3d.new(0, 0, 0)
+    pts[1] = Geom::Point3d.new(0, @boisEp - @bateeLong, 0)
+    pts[2] = Geom::Point3d.new(@bateeLarg + @jointRainProf, @boisEp - @bateeLong, 0)
+    pts[3] = Geom::Point3d.new(@bateeLarg + @jointRainProf, @boisEp - @bateeLong + @jointRainEp, 0)
+    pts[4] = Geom::Point3d.new(@bateeLarg, @boisEp - @bateeLong + @jointRainEp, 0) 
+    pts[5] = Geom::Point3d.new(@bateeLarg, @boisEp, 0)
+    pts[6] = Geom::Point3d.new(@boisLarg - @bateeLarg, @boisEp, 0)
+    pts[7] = Geom::Point3d.new(@boisLarg - @bateeLarg, @boisEp - @bateeLong + @jointRainEp, )
+    pts[8] = Geom::Point3d.new(@boisLarg - @bateeLarg - @jointRainProf, @boisEp - @bateeLong + @jointRainEp, 0)
+    pts[9] = Geom::Point3d.new(@boisLarg - @bateeLarg - @jointRainProf, @boisEp - @bateeLong, 0)
+    pts[10] = Geom::Point3d.new(@boisLarg, @boisEp - @bateeLong, )
+    pts[11] = Geom::Point3d.new(@boisLarg, 0, 0)
+    return pts
+  end
+
+  def self.pointsSeuil()
+    pts = []
+    pts[0] = Geom::Point3d.new(0, 0, 0)
+    pts[1] = Geom::Point3d.new(0, 0, 0.2.cm)
+    pts[2] = Geom::Point3d.new(0, 5.3.cm, 1.1.cm)
+    pts[3] = Geom::Point3d.new(0, 5.3.cm, 2.7.cm)
+    pts[4] = Geom::Point3d.new(0, 5.6.cm, 2.7.cm) 
+    pts[5] = Geom::Point3d.new(0, 5.6.cm, 0)
+    return pts
+  end
+
+  def self.profilUneBatee(nom, lg, nom2, angleRotation, destination_point)
+    model = Sketchup.active_model
+    definition = model.definitions.add(nom)
+
+    pts = self.pointsProfilUneBatee()
+
     face = definition.entities.add_face(pts)
     face.pushpull(lg)
 
@@ -248,25 +274,14 @@ module Menuiseries
     angle_radians = angle_degrees.degrees  # Convertir en radians
     transformation = Geom::Transformation.rotation(point, axis, angle_radians)# Créer la transformation de rotation
     instance.transform!(transformation)# Appliquer la transformation au groupe      
-  end  # profilUneBatee
+  end
       
   def self.profilDeuxBateeOpposees(nom, lg, nom2, angleRotation, destination_point)
     model = Sketchup.active_model
     definition = model.definitions.add(nom)
-    # Points du profil"Bati : 2 batée opposées
-    pts = []
-    pts[0] = Geom::Point3d.new(@bateeLarg, 0, 0)
-    pts[1] = Geom::Point3d.new(@bateeLarg, @bateeLong - @jointRainEp, 0)
-    pts[2] = Geom::Point3d.new(@bateeLarg + @jointRainProf, @bateeLong - @jointRainEp, 0)
-    pts[3] = Geom::Point3d.new(@bateeLarg + @jointRainProf, @bateeLong, 0)
-    pts[4] = Geom::Point3d.new(0, @bateeLong, 0) 
-    pts[5] = Geom::Point3d.new(0, @boisEp, 0)
-    pts[6] = Geom::Point3d.new(@boisLarg - @bateeLarg, @boisEp, 0)
-    pts[7] = Geom::Point3d.new(@boisLarg - @bateeLarg, @boisEp - @bateeLong + @jointRainEp, )
-    pts[8] = Geom::Point3d.new(@boisLarg - @bateeLarg - @jointRainProf, @boisEp - @bateeLong + @jointRainEp, 0)
-    pts[9] = Geom::Point3d.new(@boisLarg - @bateeLarg - @jointRainProf, @boisEp - @bateeLong, 0)
-    pts[10] = Geom::Point3d.new(@boisLarg, @boisEp - @bateeLong, )
-    pts[11] = Geom::Point3d.new(@boisLarg, 0, 0)
+    
+    pts = self.pointsProfilDeuxBateesOpposees()
+    
     face = definition.entities.add_face(pts)
     face.pushpull(lg)
     instance = model.entities.add_instance(definition, Geom::Transformation.new)
@@ -286,25 +301,14 @@ module Menuiseries
     instance.transform!(transformation)# Appliquer la transformation au groupe
     # 🔹 Forcer la valeur de retour
     # return instance
-  end  # fin de profilDeuxBateeOpposees
-      
+  end
+
   def self.profilDeuxBateeSymetrique(nom, lg, nom2, angleRotation, destination_point)
     model = Sketchup.active_model
     definition = model.definitions.add(nom)
     # Points du profil"traverse haute bati : 2 batées symetrique
-    pts = []
-    pts[0] = Geom::Point3d.new(0, 0, 0)
-    pts[1] = Geom::Point3d.new(0, @boisEp - @bateeLong, 0)
-    pts[2] = Geom::Point3d.new(@bateeLarg + @jointRainProf, @boisEp - @bateeLong, 0)
-    pts[3] = Geom::Point3d.new(@bateeLarg + @jointRainProf, @boisEp - @bateeLong + @jointRainEp, 0)
-    pts[4] = Geom::Point3d.new(@bateeLarg, @boisEp - @bateeLong + @jointRainEp, 0) 
-    pts[5] = Geom::Point3d.new(@bateeLarg, @boisEp, 0)
-    pts[6] = Geom::Point3d.new(@boisLarg - @bateeLarg, @boisEp, 0)
-    pts[7] = Geom::Point3d.new(@boisLarg - @bateeLarg, @boisEp - @bateeLong + @jointRainEp, )
-    pts[8] = Geom::Point3d.new(@boisLarg - @bateeLarg - @jointRainProf, @boisEp - @bateeLong + @jointRainEp, 0)
-    pts[9] = Geom::Point3d.new(@boisLarg - @bateeLarg - @jointRainProf, @boisEp - @bateeLong, 0)
-    pts[10] = Geom::Point3d.new(@boisLarg, @boisEp - @bateeLong, )
-    pts[11] = Geom::Point3d.new(@boisLarg, 0, 0)
+    pts = self.pointsProfilDeuxBateesSymetriques()
+
     face = definition.entities.add_face(pts)
     face.pushpull(lg)
     instance = model.entities.add_instance(definition, Geom::Transformation.new)
@@ -323,19 +327,14 @@ module Menuiseries
     angle_radians = angle_degrees.degrees  # Convertir en radians
     transformation = Geom::Transformation.rotation(point, axis, angle_radians)# Créer la transformation de rotation
     instance.transform!(transformation)# Appliquer la transformation au groupe
-  end  # fin de profilDeuxBateeOpposees
+  end
 
   def self.creer_Seuil(nom, lg, nom2, angleRotation, destination_point)
     model = Sketchup.active_model
     definition = model.definitions.add(nom)
-    # Pts profil seuil 27 x 56
-    pts = []
-    pts[0] = Geom::Point3d.new(0, 0, 0)
-    pts[1] = Geom::Point3d.new(0, 0, 0.2.cm)
-    pts[2] = Geom::Point3d.new(0, 5.3.cm, 1.1.cm)
-    pts[3] = Geom::Point3d.new(0, 5.3.cm, 2.7.cm)
-    pts[4] = Geom::Point3d.new(0, 5.6.cm, 2.7.cm) 
-    pts[5] = Geom::Point3d.new(0, 5.6.cm, 0)
+    
+    pts = self.pointsSeuil()
+
     face = definition.entities.add_face(pts)
     face.pushpull(lg)
     instance = model.entities.add_instance(definition, Geom::Transformation.new)
@@ -344,7 +343,7 @@ module Menuiseries
     #information composant
     info_composant(instance, "seuil alu", @prixMlSeuil, "ml", lg)
     # Translation du profil
-    #destination_point = Geom::Point3d.new( - (@largExt / 2 - @boisLarg / 2), 0, 0)  # point de destination
+
     translation_vector = destination_point - instance.bounds.center # Calculer la translation n écessaire 
     instance.transform!(Geom::Transformation.new(translation_vector))# Appliquer la translation au groupe
     # Rotation du profil
@@ -354,165 +353,117 @@ module Menuiseries
     angle_radians = angle_degrees.degrees  # Convertir en radians
     transformation = Geom::Transformation.rotation(point, axis, angle_radians)# Créer la transformation de rotation
     instance.transform!(transformation)# Appliquer la transformation au groupe      
-  end  #Creation du seuil 
+  end
 
-  def self.inserer_vitrage_entre_deux_traverses(travHaute, travBasse, ep_Verre, bateeLarg, jeuVerre, largBois) 
-    model = Sketchup.active_model
-    ents = model.active_entities
+  def self.changerDefinitionDuVerre(model)
     def_name = "Vitrage"
     definition_verre = model.definitions[def_name] || model.definitions.add(def_name)
     definition_verre.entities.clear! if definition_verre.entities.count > 0
+  end
 
-    nom_vitrage  = "Vitrage"
-    # defini le centre du volume entre les 2 traverses
-    bb = travHaute.bounds
-    x_min1, _, z_min1 = bb.min.to_a
-    x_max1, _, _ = bb.max.to_a
-    bb = travBasse.bounds
-    x_min2, _, _ = bb.min.to_a
-    x_max2, _, z_max2 = bb.max.to_a  
-    # dimmension du verre
-    # verifis la longeur des traverses afin de prendre la plus grand dimension
-    if x_max1 >= x_max2 then x_max = x_max1 end
-    if x_max2 >= x_max1 then x_max = x_max2 end
-    if x_min1 >= x_min2 then x_min = x_min1 end
-    if x_min2 >= x_min1 then x_min = x_min2 end
-    # UI.messagebox("x_max '#{x_max}, x_min '#{x_min}, travHaute '#{travHaute}, travBasse '#{travBasse}")
-    largeurDuVerre = (x_max - x_min ) - (largBois - bateeLarg + jeuVerre) *  2 
-    hauteurDuVerre = (z_min1 - z_max2) + (bateeLarg - jeuVerre) * 2
-    # 💡 Coordonnées du rectangle autour du centre (dans le repère local)
-    x1 =- largeurDuVerre / 2.0
-    x2 = largeurDuVerre / 2.0
-    z1 =- hauteurDuVerre / 2.0
-    z2 = hauteurDuVerre / 2.0
-    # - - - Création du vitrage (volume) - -  - 
-    grp_vitrage = ents.add_group
-    grp_vitrage.name = nom_vitrage
-    # rectangle de base
+  def self.calculCoordonnesVitrage(traverseHaute, traverseBasse)
+    bounds = traverseHaute.bounds
+    x_min1, _, z_min = bounds.min.to_a
+    x_max1, _, _ = bounds.max.to_a
+    bounds = traverseBasse.bounds
+    x_min2, _, _ = bounds.min.to_a
+    x_max2, _, z_max = bounds.max.to_a  
+
+    x_max = [x_max1, x_max2].max
+    x_min = [x_min1, x_min2].max
+
+    largeurDuVerre = (x_max - x_min ) - (@boisLarg - @bateeLarg + @jeuVerre * 2)
+    hauteurDuVerre = (z_min - z_max) + (@bateeLarg - @jeuVerre) * 2
+
+    return hauteurDuVerre, largeurDuVerre
+  end
+
+  def self.pointsRectangle(largeur, hauteur)
+    x1 = -largeur / 2.0
+    x2 = largeur / 2.0
+    z1 = -hauteur / 2.0
+    z2 = hauteur / 2.0
+
     pts = [
       Geom::Point3d.new(x1, 0, z1), 
       Geom::Point3d.new(x2, 0, z1), 
       Geom::Point3d.new(x2, 0, z2), 
       Geom::Point3d.new(x1, 0, z2)
     ]
+    return pts
+  end
+
+  def self.dessinerVitrage(model, largeur, hauteur)
+    grp_vitrage = model.active_entities.add_group
+
+    # rectangle de base
+    pts = self.pointsRectangle(largeur, hauteur)
+
     face = grp_vitrage.entities.add_face(pts)
     face.reverse! if face.normal.z < 0
     # extrusion selon l'épaisseur du verre
-    face.pushpull(ep_Verre)
-    # - - - Application matière transparente - -  - 
+    face.pushpull(@EpVerre)
+
+    return grp_vitrage
+  end
+
+  def self.appliquerMatiereVerre(model, vitrage)
     materials = model.materials
     mat = materials["Vitrage"] || materials.add("Vitrage")
-    mat.alpha = 0.3  # transparence (1.0 opaque → 0.0 invisible)
-    mat.color = Sketchup::Color.new(180, 220, 255) # bleu clair vitre
-    grp_vitrage.material = mat
-    grp_vitrage.entities.each { |e| e.material = mat if e.respond_to?(:material=) }
-    # - - - Boîtes englobantes - -  - 
-    bb_bas = travBasse.bounds
-    bb_haut = travHaute.bounds
-    # - - - Calcul du centre du "rectangle formé par les deux traverses" - -  - 
-    x_centre = ( [bb_bas.min.x, bb_haut.min.x].min + [bb_bas.max.x, bb_haut.max.x].max ) / 2.0
-    y_centre = ( [bb_bas.min.y, bb_haut.min.y].min + [bb_bas.max.y, bb_haut.max.y].max ) / 2.0
-    z_centre = (bb_bas.max.z + bb_haut.min.z) / 2.0
-    centre_traverses = Geom::Point3d.new(x_centre, y_centre, z_centre)
-    # - - - Centre actuel du vitrage - -  - 
-    bb = grp_vitrage.bounds
-    centre_vitre = Geom::Point3d.new(
+    mat.alpha = 0.3
+    mat.color = Sketchup::Color.new(180, 220, 255)
+    
+    vitrage.material = mat
+    vitrage.name = "Vitrage"
+    vitrage.entities.each { |e| e.material = mat if e.respond_to?(:material=) }
+  end
+
+  def self.centreTraverses(traverseHaute, traverseBasse)
+    haut = traverseHaute.bounds
+    bas = traverseBasse.bounds
+    
+    x_centre = ( [bas.min.x, haut.min.x].min + [bas.max.x, haut.max.x].max ) / 2.0
+    y_centre = ( [bas.min.y, haut.min.y].min + [bas.max.y, haut.max.y].max ) / 2.0
+    z_centre = (bas.max.z + haut.min.z) / 2.0
+
+    return Geom::Point3d.new(x_centre, y_centre, z_centre)
+  end
+
+  def self.centreVitrage(vitrage)
+    bb = vitrage.bounds
+    return Geom::Point3d.new(
       (bb.min.x + bb.max.x) / 2.0, 
       (bb.min.y + bb.max.y) / 2.0, 
       (bb.min.z + bb.max.z) / 2.0
     )
-    # - - - Calcul de la translation - -  - 
-    vecteur = centre_traverses - centre_vitre
-    tr = Geom::Transformation.translation(vecteur)
-    grp_vitrage.transform!(tr)
-  end #inserer_vitrage_entre_deux_traverses(travHaute, travBasse) 
-     
-  def self.inserer_vitrage_dans_cadre(nom_groupe, ep_Verre)
-    model = Sketchup.active_model
-    groupe = model.entities.grep(Sketchup::Group).find { |g| g.name == nom_groupe }
-
-    unless groupe
-      UI.messagebox("❌ Groupe '#{nom_groupe}' introuvable.")
-      return
-    end
-
-    bb = groupe.bounds
-    x_min, y_min, z_min = bb.min.to_a
-    x_max, y_max, z_max = bb.max.to_a
-
-    # ⚙️ Paramètres
-    # epaisseur_verre = 6.mm
-    retrait = 5.mm
-
-    # 🧮 Calculs centraux
-    #x_centre = (x_min + x_max) / 2.0
-    #z_centre = (z_min + z_max) / 2.0
-
-    largeur = (x_max - x_min) - (retrait  *  2) - (@boisLarg -  @bateeLarg) * 2
-    hauteur = (z_max - z_min) - (retrait  *  2) - (@boisLarg -  @bateeLarg) * 2
-
-    # 💡 Coordonnées du rectangle autour du centre (dans le repère local)
-    x1 =- largeur / 2.0
-    x2 = largeur / 2.0
-    z1 =- hauteur / 2.0
-    z2 = hauteur / 2.0
-
-    # ⚙️ Position en profondeur (centré dans le cadre)
-    epaisseur_cadre = y_max - y_min
-    y_centre = (epaisseur_cadre / 2.0)
-    y_face = y_centre - (ep_Verre / 2.0)
-
-    # 🔹 Création de la définition pour le vitrage
-    def_name = "Vitrage #{nom_groupe}"
-    definition_verre = model.definitions[def_name] || model.definitions.add(def_name)
-    definition_verre.entities.clear! if definition_verre.entities.count > 0
-
-    # 🔹 Création du rectangle autour de l’origine
-    pts = [
-      Geom::Point3d.new(x1, 0, z1), 
-      Geom::Point3d.new(x2, 0, z1), 
-      Geom::Point3d.new(x2, 0, z2), 
-      Geom::Point3d.new(x1, 0, z2)
-    ]
-    face = definition_verre.entities.add_face(pts)
-    face.reverse! if face.normal.y < 0
-    face.pushpull(ep_Verre)
-
-    # 🔹 Matériau verre
-    mat_name = "Verre et Miroir"
-    mat = model.materials[mat_name] || model.materials.add(mat_name)
-    mat.color = Sketchup::Color.new(180, 220, 255)
-    mat.alpha = 0.4
-    face.material = mat
-    face.back_material = mat
-
-    # 🔹 Calcul du centre du cadre dans le repère global
-    cadre_centre_global = bb.center
-    # Conversion du centre global → local au groupe
-    cadre_centre_local = cadre_centre_global.transform(groupe.transformation.inverse)
-
-    # 🔹 Transformation finale (position locale correcte)
-    translation = Geom::Transformation.new([cadre_centre_local.x, y_face, cadre_centre_local.z])
-    instance_verre = groupe.entities.add_instance(definition_verre, translation)
-    instance_verre.name = "Vitrage"
-
-    puts "✅ Vitrage centré et aligné dans '#{nom_groupe}'."
-    return instance_verre
   end
-      
+
+  def self.positionnerVitrage(vitrage, traverseHaute, traverseBasse) 
+    centre_traverses = self.centreTraverses(traverseHaute, traverseBasse)
+    centre_vitre = self.centreVitrage(vitrage)
+    vecteur = centre_traverses - centre_vitre
+    transformation = Geom::Transformation.translation(vecteur)
+    vitrage.transform!(transformation)
+  end
+
+  def self.inserer_vitrage_entre_deux_traverses(traverseHaute, traverseBasse) 
+    model = Sketchup.active_model
+    self.changerDefinitionDuVerre(model)
+    hauteur, largeur = self.calculCoordonnesVitrage(traverseHaute, traverseBasse)
+    vitrage = self.dessinerVitrage(model, largeur, hauteur)
+    self.appliquerMatiereVerre(model, vitrage)
+    self.positionnerVitrage(vitrage, traverseHaute, traverseBasse)
+  end
+
+
   def self.defini_le_centre_entre_deux_pieces(piece1, piece2)
-    bb = piece1.bounds
-    x_min1, y_min1, z_min1 = bb.min.to_a
-    #x_max1, y_max1, z_max1 = bb.max.to_a
-      bb = piece2.bounds
-    #x_min2, y_min2, z_min2 = bb.min.to_a
-    x_max2, y_max2, z_max2 = bb.max.to_a  
+    x_min1, y_min1, z_min1 = piece1.bounds.min.to_a
+    x_max2, y_max2, z_max2 = piece2.bounds.max.to_a  
     # 🧮 Calculs centraux
     @x_centre = (x_min1 + x_max2) / 2.0
     @y_centre = (y_min1 + y_max2) / 2.0
     @z_centre = (z_min1 + z_max2) / 2.0
-  end # defini_le_centre_entre_deux_pieces(piece1, piece2)
-      
+  end
       
   def self.etiquette_info     
     model = Sketchup.active_model
@@ -521,40 +472,47 @@ module Menuiseries
     model = Sketchup.active_model
     ents = model.active_entities
     # - - - Paramètres - -  - 
-    texte = "Fenetre - #{@ref}  - \n, 
-        Largeur tableau = #{@tableauLarg}\n, 
-        Hauteur tableau = #{@tableauHaut}\n, 
-        Hauteur Imposte = #{@imposteHauteur}\n, 
-        Nombre ouvrant = #{@nombreOuvrant}\n, 
-        Porte fenetre = #{@porteFenetre}\n, 
-        Hauteur ouvrant = #{@ouvrantHaut.to_cm.round(1)} \n, 
+    texte = "Fenetre - #{@ref}  - , 
+        Largeur tableau = #{@tableauLarg}, 
+        Hauteur tableau = #{@tableauHaut}, 
+        Hauteur Imposte = #{@imposteHauteur}, 
+        Nombre ouvrant = #{@nombreOuvrant}, 
+        Porte fenetre = #{@porteFenetre}, 
+        Hauteur ouvrant = #{@ouvrantHaut.to_cm.round(1)}, 
         Largeur ouvrant = #{@ouvrantLarg.to_cm.round(1)}\
         "
+
+    etiquette = ents.add_group
+    self.creerLignesDeTexte(etiquette, texte)
+    self.positionneEtiquetteInfo(etiquette)
+  end
+
+  def self.creerLignesDeTexte(etiquette, texte)
     police = "Arial"
     taille = 20.mm
     extrusion = 2.mm
     couleur = Sketchup::Color.new(255, 0, 0)
-    position = Geom::Point3d.new( - 10, - 2, 0)
     espacement = 1.2
-    # - - - Groupe principal - -  - 
-    outer_group = ents.add_group
-    gents = outer_group.entities
-    # - - - Créer les lignes de texte - -  - 
+    gents = etiquette.entities
+
     lignes = texte.split("\n")
     y_offset = 0
     lignes.each do |ligne|
-    line_group = gents.add_group
-    line_group.entities.add_3d_text(ligne, 0, police, true, false, taille, 0.1, 0.0, true, extrusion)
-    line_group.transform!(Geom::Transformation.new([0, y_offset, 0]))
-    line_group.material = couleur
-    line_group.entities.each { |e| e.material = couleur if e.respond_to?(:material=) }
-    y_offset -= taille  *  espacement
+      line_group = gents.add_group
+      line_group.entities.add_3d_text(ligne, 0, police, true, false, taille, 0.1, 0.0, true, extrusion)
+      line_group.transform!(Geom::Transformation.new([0, y_offset, 0]))
+      line_group.material = couleur
+      line_group.entities.each { |e| e.material = couleur if e.respond_to?(:material=) }
+      y_offset -= taille  *  espacement
     end
-    # - - - Position + rotation - -  - 
+  end
+
+  def self.positionneEtiquetteInfo(etiquette)
+    position = Geom::Point3d.new( - 10, - 2, 0)
     tr_pos = Geom::Transformation.new(position)
     tr_rot = Geom::Transformation.rotation(position, X_AXIS, 90.degrees) # ← rotation verticale ici
-    outer_group.transform!(tr_rot  *  tr_pos)
-  end #etiquette_info
+    etiquette.transform!(tr_rot  *  tr_pos)
+  end
 
   def self.creer_Menuiserie(dimensionPrompt = true)    
 
@@ -603,7 +561,7 @@ module Menuiseries
       destination_point = Geom::Point3d.new(0, (@boisEp - 5.6.cm) / 2, - ((@hautExt / 2) - 1.35.cm))#point de destination
       batiTB = creer_Seuil("Profil seuil Alu", @largExt, "Bati - Seuil", 0, destination_point) 
 
-    end #si pas pf  
+    end
 
     #creation de la traverse de l'imposte
     if @imposteHauteur > 0 then # avec imposte
@@ -612,7 +570,7 @@ module Menuiseries
       # duplique les traverse pour creer le verre entre deux et les supprimes apres  
       batiTH1 = batiTH.copy
       batiTI1 = batiTI.copy      
-      verre = inserer_vitrage_entre_deux_traverses(batiTH1, batiTI1, @EpVerre, @bateeLarg, @jeuVerre, @boisBatiLarg)
+      verre = inserer_vitrage_entre_deux_traverses(batiTH1, batiTI1)
       batiTH1.erase!
       batiTI1.erase!
 
@@ -626,7 +584,7 @@ module Menuiseries
 
         batiTH1 = batiTI.copy
         batiTI1 = batiTB.copy      
-        verre2 = inserer_vitrage_entre_deux_traverses(batiTH1, batiTI1, @EpVerre, @bateeLarg, @jeuVerre, @boisBatiLarg)
+        verre2 = inserer_vitrage_entre_deux_traverses(batiTH1, batiTI1)
         batiTH1.erase!
         batiTI1.erase!
         # groupe les 5 pieces du bati
@@ -653,7 +611,7 @@ module Menuiseries
         # dessine le verre dans l'imposte      
         batiTH1 = batiTH.copy
         batiTI1 = batiTB.copy      
-        verre1 = inserer_vitrage_entre_deux_traverses(batiTH1, batiTI1, @EpVerre, @bateeLarg, @jeuVerre, @boisBatiLarg)
+        verre1 = inserer_vitrage_entre_deux_traverses(batiTH1, batiTI1)
         batiTH1.erase!
         batiTI1.erase!
         # groupe les 5 pieces du bati
@@ -728,7 +686,7 @@ module Menuiseries
       # duplique les traverse pour creer le verre entre traverse Haute et Intermediaire et les suppriment apres
       ouvTH1 = ouvTH.copy
       ouvTI2 = ouvTI.copy
-      ouvrantV2 = inserer_vitrage_entre_deux_traverses(ouvTH1, ouvTI2, @EpVerre, @bateeLarg, @jeuVerre, @boisLarg)
+      ouvrantV2 = inserer_vitrage_entre_deux_traverses(ouvTH1, ouvTI2)
       ouvTH1.erase!
       ouvTI2.erase!
       # groupe les 6 elements
@@ -739,7 +697,7 @@ module Menuiseries
       ouvTH1 = ouvTH.copy
       ouvTI2 = ouvTB.copy
       #UI.messagebox("Pas d'allege)")
-      ouvrantV2 = inserer_vitrage_entre_deux_traverses(ouvTH1, ouvTI2, @EpVerre, @bateeLarg, @jeuVerre, @boisLarg)
+      ouvrantV2 = inserer_vitrage_entre_deux_traverses(ouvTH1, ouvTI2)
       ouvTH1.erase!
       ouvTI2.erase!
       grp = Sketchup.active_model.entities.add_group
@@ -790,10 +748,10 @@ module Menuiseries
   end # creer_Menuiserie  
  
   # creer_Menuiserie
-  Sketchup.send_action("showComponentOptions:")
+  # Sketchup.send_action("showComponentOptions:")
  
   def self.testBase()
-    self.creer_Menuiserie(true)
+    self.creer_Menuiserie(false)
   end
   testBase()
 end # module
