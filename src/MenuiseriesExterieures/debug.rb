@@ -1,0 +1,17 @@
+module I3D
+  module MenuiseriesExterieures
+    # Reload extension by running this method from the Ruby Console:
+    #   I3D::MenuiseriesExterieures.reload
+    def self.reload
+      original_verbose = $VERBOSE
+      $VERBOSE = nil
+      pattern = File.join(__dir__, '**/*.rb')
+      Dir.glob(pattern).each { |file|
+        # Cannot use `Sketchup.load` because its an alias for `Sketchup.require`.
+        load file
+      }.size
+    ensure
+      $VERBOSE = original_verbose
+    end
+  end
+end
