@@ -32,6 +32,8 @@ module I3D
     end
 
     class Pose
+      attr_accessor :tableau, :cochonnet
+
       def initialize(tableau, cochonnet)
         @tableau = tableau
         @cochonnet = cochonnet
@@ -39,13 +41,19 @@ module I3D
     end
 
     class Tableau
+      attr_accessor :largeur, :hauteur
+
       def initialize(largeur, hauteur)
         @largeur = largeur
         @hauteur = hauteur
       end
+
+
     end
 
     class Structure
+      attr_accessor :profil, :vitrage
+
       def initialize(profil, vitrage)
         @profil = profil
         @vitrage = vitrage
@@ -57,6 +65,8 @@ module I3D
     end
 
     class Ouvrant < Structure
+      attr_accessor :hauteurAllege
+
       def initialize(profil, vitrage, hauteurAllege)
         super(profil, vitrage)
         @hauteurAllege = hauteurAllege
@@ -75,16 +85,29 @@ module I3D
     end
 
     class Bati < Structure
+      attr_accessor :hauteurImposte
+
       def initialize(profil, vitrage, hauteurImposte)
         super(profil, vitrage)
         @hauteurImposte = hauteurImposte
+      end
+
+      def hauteurExterieure(pose)
+        return pose.tableau.hauteur + @profil.bois.largeur - pose.cochonnet
+      end
+
+      def largeurExterieure(pose)
+        return pose.tableau.largeur + 2 * (@profil.bois.largeur - pose.cochonnet)
       end
     end
 
     class BatiFenetre < Bati
       def tracer(pose)
         puts "tracer bati fenetre"
-        @profil.tracerSimplebatee(20)
+      end
+
+      def longueurMontant(pose)
+        return self.hauteurExterieure(pose) - 2 * (@profil.bois.largeur - @profil.batee.largeur)
       end
     end
 
@@ -93,6 +116,10 @@ module I3D
         super(profil, vitrage, hauteurImposte)
         @seuil = seuil
       end
+
+      def longueurMontant(pose)
+        return self.hauteurExterieure(pose) - (@profil.bois.largeur - @profil.batee.largeur)
+      end
     end
 
     class Seuil
@@ -100,6 +127,8 @@ module I3D
     end
 
     class Profil
+      attr_accessor :joint, :batee, :bois
+
       def initialize(joint, batee, bois)
         @joint = joint
         @batee = batee
@@ -179,6 +208,7 @@ module I3D
 
     class Joint
       attr_accessor :epaisseurRainure, :profondeurRainure
+
       def initialize(epaisseurRainure, profondeurRainure)
         @epaisseurRainure = epaisseurRainure
         @profondeurRainure = profondeurRainure
@@ -186,11 +216,11 @@ module I3D
     end
 
     class Batee
-      attr_accessor :largeur, :epaisseur
+      attr_accessor :epaisseur, :largeur
 
-      def initialize(largeur, epaisseur)
-        @largeur = largeur
+      def initialize(epaisseur, largeur)
         @epaisseur = epaisseur
+        @largeur = largeur
       end
     end
 
@@ -214,110 +244,6 @@ module I3D
 
     @prixUnit = 18
     @prixMlSeuil = 34
-
-    @cochonnet = 3.cm
-    @boisEp = 6.3.cm
-    @boisLarg = 8.6.cm
-    @boisBatiLarg = 8.6.cm
-    @bateeLong = 4.5.cm
-    @bateeLarg = 1.8.cm
-    @jointRainEp = 0.3.cm
-    @jointRainProf = 0.6.cm
-    @jeu = 0.3.cm
-    @EpVerre = 2.4.cm
-    @jeuVerre = 0.5.cm
-    @ref = ""
-    @tableauLarg = 85.cm
-    @tableauHaut = 200.cm
-    @imposteHauteur = 50.cm
-    @allegeHauteur = 50.cm
-    @nombreOuvrant = 1
-    @porteFenetre = "Oui"
-
-
-    def self.dimension_Profil_bois
-
-      prompts = [
-        "cochonnet :", 
-        "Epaisseur bois :", 
-        "Largeur bois (ouvrant) :", 
-        "Largeur bois (dormant) :", 
-        "Longueur batée :", 
-        "Largeur batée :", 
-        "Epaisseur rainure joint :", 
-        "Profondeur rainure joint :", 
-        "Jeu ouvrant/dormant :", 
-        "Epaisseur vitrage :", 
-        "Jeu vitrage/bois :", 
-        "Reference:", 
-        "Largeur Tableau:", 
-        "Hauteur Tableau:", 
-        "Hauteur imposte:", 
-        "Hauteur allege:", 
-        "Nombre d'Ouvrant:", 
-        "Porte Fenetre? :"
-      ]
-
-      # Conversion pour affichage (en mm)
-      defaults = [
-        @cochonnet.to_mm, 
-        @boisEp.to_mm, 
-        @boisLarg.to_mm, 
-        @boisBatiLarg.to_mm, 
-        @bateeLong.to_mm, 
-        @bateeLarg.to_mm, 
-        @jointRainEp.to_mm, 
-        @jointRainProf.to_mm, 
-        @jeu.to_mm, 
-        @EpVerre.to_mm, 
-        @jeuVerre.to_mm, 
-        @ref, 
-        @tableauLarg.to_mm, 
-        @tableauHaut.to_mm, 
-        @imposteHauteur.to_mm, 
-        @allegeHauteur.to_mm, 
-        @nombreOuvrant.to_i, 
-        @porteFenetre
-      ]
-      listes = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "0|1|2", "Oui|Non"]
-
-      results = UI.inputbox(prompts, defaults, listes, "Dimensions des profils bois")
-      if results == nil || results == false then
-        return false
-      end
-
-      # Conversion inverse (mm → unités SketchUp)
-      @cochonnet = results[0].mm
-      @boisEp = results[1].mm
-      @boisLarg = results[2].mm
-      @boisBatiLarg = results[3].mm
-      @bateeLong = results[4].mm
-      @bateeLarg = results[5].mm
-      @jointRainEp = results[6].mm
-      @jointRainProf = results[7].mm
-      @jeu = results[8].mm
-      @EpVerre = results[9].mm
-      @jeuVerre = results[10].mm
-      @ref = results[11]
-      @tableauLarg = results[12].mm
-      @tableauHaut = results[13].mm
-      @imposteHauteur = results[14].mm
-      @allegeHauteur = results[15].mm
-      @nombreOuvrant = results[16].to_i
-      @porteFenetre = results[17]
-
-      @hauteurSeuilAlu = 27.mm
-      @decalageSeuilAlu = @hauteurSeuilAlu - @bateeLarg + @jeu #1.4.cm
-    end
-
-    # class FenetreSimpleOuvrant
-    # class FenetreDoubleOuvrant
-    # class PorteFenetreSimpleOuvrant
-    # class PorteFenetreDoubleouvrant
-    # => Pour chaque cas :
-    #    - imposte
-    #    - allege
-    #    - imposte + allege
 
     def self.calcul_dimension
         # calcul des dimensions de longueurs des differentes pieces
@@ -349,10 +275,10 @@ module I3D
           @ouvrantLarg = (@largExt - @boisBatiLarg - @boisBatiLarg + @bateeLarg + @bateeLarg + @bateeLarg + @bateeLarg - @jeu - @jeu) 
         end   
 
-        @batiTraverseHautelong = @largExt # - (@boisBatiLarg - @bateeLarg) * 2
-        @batiTraverseIntermediaire = @largExt - (@boisBatiLarg - @bateeLarg) * 2
-        @batiMontantlongSiPF = @hautExt - (@boisBatiLarg - @bateeLarg)
-        @batiMontantlongSiPasPF = @hautExt - (@boisBatiLarg - @bateeLarg) * 2
+        @batiTraverseHautelong = @largExt # Fait
+        @batiTraverseIntermediaire = @largExt - (@boisBatiLarg - @bateeLarg) * 2 
+        @batiMontantlongSiPF = @hautExt - (@boisBatiLarg - @bateeLarg)  # Fait
+        @batiMontantlongSiPasPF = @hautExt - (@boisBatiLarg - @bateeLarg) * 2  # Fait
         @OuvrantTraverseLong = @ouvrantLarg# -  2  *  (@boisLarg - @bateeLarg)
         @OuvrantTraverseIntermediaireLong = @ouvrantLarg - @boisLarg - @boisLarg + @bateeLarg + @bateeLarg
         @OuvrantMontantLong = @ouvrantHaut - (@boisLarg - @bateeLarg) * 2

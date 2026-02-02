@@ -55,7 +55,7 @@ module I3D
 
       tableau = Tableau.new(results[12].mm, results[13].mm)
       pose = Pose.new(tableau, results[0].mm)
-      batee = Batee.new(results[4].mm, results[5].mm)
+      batee = Batee.new(results[5].mm, results[4].mm)
       joint = Joint.new(results[6].mm, results[7].mm)
       boisBati = Bois.new(results[3].mm, results[1].mm)
       boisOuvrant = Bois.new(results[2].mm, results[1].mm)
