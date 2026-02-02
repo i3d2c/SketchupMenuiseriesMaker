@@ -84,7 +84,7 @@ module I3D
     class BatiFenetre < Bati
       def tracer(pose)
         puts "tracer bati fenetre"
-        @profil.tracerDoubleBateesSymetriques(120)
+        @profil.tracerSimplebatee(20)
       end
     end
 
@@ -106,17 +106,17 @@ module I3D
         @bois = bois
       end
 
-      def tracerSimpleBatee(longueur)
+      def tracerSimplebatee(longueur)
         model = Sketchup.active_model
         definition = model.definitions.add("Profil 1")
         points = [
           Geom::Point3d.new(0, 0, 0),
           Geom::Point3d.new(0, @bois.epaisseur, 0),
           Geom::Point3d.new(@bois.largeur - @batee.largeur, @bois.epaisseur, 0),
-          Geom::Point3d.new(@bois.largeur - @batee.largeur, @bois.epaisseur - @batee.longueur + @joint.epaisseurRainure, 0),
-          Geom::Point3d.new(@bois.largeur - @batee.largeur - @joint.profondeurRainure, @bois.epaisseur - @batee.longueur + @joint.epaisseurRainure, 0),
-          Geom::Point3d.new(@bois.largeur - @batee.largeur - @joint.profondeurRainure, @bois.epaisseur - @batee.longueur, 0),
-          Geom::Point3d.new(@bois.largeur, @bois.epaisseur - @batee.longueur, 0),
+          Geom::Point3d.new(@bois.largeur - @batee.largeur, @bois.epaisseur - @batee.epaisseur + @joint.epaisseurRainure, 0),
+          Geom::Point3d.new(@bois.largeur - @batee.largeur - @joint.profondeurRainure, @bois.epaisseur - @batee.epaisseur + @joint.epaisseurRainure, 0),
+          Geom::Point3d.new(@bois.largeur - @batee.largeur - @joint.profondeurRainure, @bois.epaisseur - @batee.epaisseur, 0),
+          Geom::Point3d.new(@bois.largeur, @bois.epaisseur - @batee.epaisseur, 0),
           Geom::Point3d.new(@bois.largeur, 0, 0),
           Geom::Point3d.new(0, 0, 0)
         ]
@@ -132,16 +132,16 @@ module I3D
         definition = model.definitions.add("Profil 2")
         points = [
           Geom::Point3d.new(@batee.largeur, 0, 0),
-          Geom::Point3d.new(@batee.largeur, @batee.longueur - @joint.epaisseurRainure, 0),
-          Geom::Point3d.new(@batee.largeur + @joint.profondeurRainure, @batee.longueur - @joint.epaisseurRainure, 0),
-          Geom::Point3d.new(@batee.largeur + @joint.profondeurRainure, @batee.longueur, 0),
-          Geom::Point3d.new(0, @batee.longueur, 0),
+          Geom::Point3d.new(@batee.largeur, @batee.epaisseur - @joint.epaisseurRainure, 0),
+          Geom::Point3d.new(@batee.largeur + @joint.profondeurRainure, @batee.epaisseur - @joint.epaisseurRainure, 0),
+          Geom::Point3d.new(@batee.largeur + @joint.profondeurRainure, @batee.epaisseur, 0),
+          Geom::Point3d.new(0, @batee.epaisseur, 0),
           Geom::Point3d.new(0, @bois.epaisseur, 0),
           Geom::Point3d.new(@bois.largeur - @batee.largeur, @bois.epaisseur, 0),
-          Geom::Point3d.new(@bois.largeur - @batee.largeur, @bois.epaisseur - @batee.longueur + @joint.epaisseurRainure, 0),
-          Geom::Point3d.new(@bois.largeur - @batee.largeur - @joint.profondeurRainure, @bois.epaisseur - @batee.longueur + @joint.epaisseurRainure, 0),
-          Geom::Point3d.new(@bois.largeur - @batee.largeur - @joint.profondeurRainure, @bois.epaisseur - @batee.longueur, 0),
-          Geom::Point3d.new(@bois.largeur, @bois.epaisseur - @batee.longueur, 0),
+          Geom::Point3d.new(@bois.largeur - @batee.largeur, @bois.epaisseur - @batee.epaisseur + @joint.epaisseurRainure, 0),
+          Geom::Point3d.new(@bois.largeur - @batee.largeur - @joint.profondeurRainure, @bois.epaisseur - @batee.epaisseur + @joint.epaisseurRainure, 0),
+          Geom::Point3d.new(@bois.largeur - @batee.largeur - @joint.profondeurRainure, @bois.epaisseur - @batee.epaisseur, 0),
+          Geom::Point3d.new(@bois.largeur, @bois.epaisseur - @batee.epaisseur, 0),
           Geom::Point3d.new(@bois.largeur, 0, 0)
         ]
         face = definition.entities.add_face(points)
@@ -156,17 +156,18 @@ module I3D
         definition = model.definitions.add("Profil 3")
         points = [
           Geom::Point3d.new(0, 0, 0),
-          Geom::Point3d.new(0, @bois.epaisseur - @batee.longueur, 0),
-          Geom::Point3d.new(@batee.largeur - @joint.profondeurRainure, @bois.epaisseur - @batee.longueur, 0),
-          Geom::Point3d.new(@batee.largeur - @joint.profondeurRainure, @bois.epaisseur - @batee.longueur - @joint.epaisseurRainure, 0),
-          Geom::Point3d.new(@batee.largeur, @bois.epaisseur - @batee.longueur - @joint.epaisseurRainure, 0),
-          Geom::Point3d.new(@batee.largeur, @bois.epaisseur, 0),
+          Geom::Point3d.new(0, @bois.epaisseur, 0),
           Geom::Point3d.new(@bois.largeur - @batee.largeur, @bois.epaisseur, 0),
-          Geom::Point3d.new(@bois.largeur - @batee.largeur, @bois.epaisseur - @batee.longueur - @joint.epaisseurRainure, 0),
-          Geom::Point3d.new(@bois.largeur - @batee.largeur + @joint.profondeurRainure, @bois.epaisseur - @batee.longueur - @joint.epaisseurRainure, 0),
-          Geom::Point3d.new(@bois.largeur - @batee.largeur + @joint.profondeurRainure, @bois.epaisseur - @batee.longueur, 0),
-          Geom::Point3d.new(@bois.largeur, @bois.epaisseur - @batee.longueur, 0),
-          Geom::Point3d.new(@bois.largeur, 0, 0)
+          Geom::Point3d.new(@bois.largeur - @batee.largeur, @bois.epaisseur - @batee.epaisseur + @joint.epaisseurRainure, 0),
+          Geom::Point3d.new(@bois.largeur - @batee.largeur - @joint.profondeurRainure, @bois.epaisseur - @batee.epaisseur + @joint.epaisseurRainure, 0),
+          Geom::Point3d.new(@bois.largeur - @batee.largeur - @joint.profondeurRainure, @bois.epaisseur - @batee.epaisseur, 0),
+          Geom::Point3d.new(@bois.largeur, @bois.epaisseur - @batee.epaisseur, 0),
+          Geom::Point3d.new(@bois.largeur, @batee.epaisseur, 0),
+          Geom::Point3d.new(@bois.largeur - @batee.largeur - @joint.profondeurRainure, @batee.epaisseur, 0),
+          Geom::Point3d.new(@bois.largeur - @batee.largeur - @joint.profondeurRainure, @batee.epaisseur - @joint.epaisseurRainure, 0),
+          Geom::Point3d.new(@bois.largeur - @batee.largeur, @batee.epaisseur - @joint.epaisseurRainure, 0),
+          Geom::Point3d.new(@bois.largeur - @batee.largeur, 0, 0),
+          Geom::Point3d.new(0, 0, 0)
         ]
         face = definition.entities.add_face(points)
         face.pushpull(longueur)
@@ -185,20 +186,20 @@ module I3D
     end
 
     class Batee
-      attr_accessor :largeur, :longueur
+      attr_accessor :largeur, :epaisseur
 
-      def initialize(largeur, longueur)
+      def initialize(largeur, epaisseur)
         @largeur = largeur
-        @longueur = longueur
+        @epaisseur = epaisseur
       end
     end
 
     class Bois
       attr_accessor :epaisseur, :largeur
 
-      def initialize(epaisseur, largeur)
-        @epaisseur = epaisseur
+      def initialize(largeur, epaisseur)
         @largeur = largeur
+        @epaisseur = epaisseur
       end
     end
 

@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   sodipodi:docname="profils.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="2.195226"
+     inkscape:cx="1179.3774"
+     inkscape:cy="339.14504"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="ConcaveTriangle"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Concave triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path7" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round"
+       d="M 33.202405,129.76786 V 49.096735 H 88.189004 V 77.313537 H 74.0806 v 7.235079 h 60.41291 v 45.219244 z"
+       id="path1"
+       sodipodi:nodetypes="ccccccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;marker-end:url(#ConcaveTriangle)"
+       d="m 145.22383,129.86967 -112.304221,0 0,-91.845649"
+       id="path2"
+       sodipodi:nodetypes="ccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:1.2;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="31.207438"
+       y="137.10809"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="31.191563"
+         y="137.10809">0, 0</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:0.9;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="31.207438"
+       y="85.270996"
+       id="text3"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="31.207438"
+         y="85.270996">bois.epaisseur</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="31.191563"
+         y="88.976776"
+         id="tspan14">- batee.epaisseur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:0.9;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="31.207438"
+       y="70.875755"
+       id="text4"><tspan
+         sodipodi:role="line"
+         id="tspan4"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="31.207438"
+         y="70.875755">bois.epaisseur</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="31.207438"
+         y="74.581535"
+         id="tspan12">- batee.epaisseur</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="31.191565"
+         y="78.287308"
+         id="tspan13">+ joint.epaisseur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:1.2;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="31.207438"
+       y="49.925381"
+       id="text5"><tspan
+         sodipodi:role="line"
+         id="tspan5"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="31.191565"
+         y="49.925381">Bois.epaisseur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:0.9;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:center;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="90.208061"
+       y="134.99776"
+       id="text6"><tspan
+         sodipodi:role="line"
+         id="tspan6"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.7;line-height:0.9"
+         x="90.208061"
+         y="134.99776">Bois.largeur</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.7;line-height:0.9"
+         x="90.200127"
+         y="138.70354"
+         id="tspan16">- batee.largeur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:0.9;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:center;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="74.032043"
+       y="143.80054"
+       id="text7"><tspan
+         sodipodi:role="line"
+         id="tspan7"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.7;line-height:0.9"
+         x="74.032043"
+         y="143.80054">bois.largeur - batee.largeur</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.7;line-height:0.9"
+         x="74.024109"
+         y="147.50632"
+         id="tspan15">- joint.profondeur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:1.2;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="143.27754"
+       y="135.06171"
+       id="text8"><tspan
+         sodipodi:role="line"
+         id="tspan8"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="143.26167"
+         y="135.06171">bois.largeur</tspan></text>
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0"
+       d="m 74.086308,84.876521 0,54.807929"
+       id="path9"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0"
+       d="m 88.18318,77.697966 0,54.049304"
+       id="path10"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0"
+       d="m 73.740001,84.557363 -42.233671,0"
+       id="path11"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0"
+       d="m 73.700335,77.333579 -42.194005,0"
+       id="path12"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round"
+       d="m 33.731572,242.92054 v -55.89097 h 45.761873 v 18.08769 H 65.385041 v 7.23508 h 69.637639 v 55.34835 H 93.680811 V 250.3472 h 13.023149 v -7.42666 z"
+       id="path16"
+       sodipodi:nodetypes="ccccccccccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;marker-end:url(#ConcaveTriangle)"
+       d="M 150.8514,268.51255 H 32.919609 l 0,-92.86884"
+       id="path17"
+       sodipodi:nodetypes="ccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:1.2;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="31.207438"
+       y="275.75098"
+       id="text17"><tspan
+         sodipodi:role="line"
+         id="tspan17"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="31.191563"
+         y="275.75098">0, 0</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:0.9;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="31.207438"
+       y="213.75191"
+       id="text22"><tspan
+         sodipodi:role="line"
+         id="tspan20"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="31.207438"
+         y="213.75191">bois.epaisseur</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="31.191563"
+         y="217.45769"
+         id="tspan22">- batee.epaisseur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:1.2;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="31.207438"
+       y="188.56827"
+       id="text23"><tspan
+         sodipodi:role="line"
+         id="tspan23"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="31.191565"
+         y="188.56827">Bois.epaisseur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:0.9;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:center;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="94.68454"
+       y="272.16977"
+       id="text25"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.7"
+         x="94.676605"
+         y="272.16977"
+         id="tspan25">batee.largeur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:1.2;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="143.27754"
+       y="273.70459"
+       id="text28"><tspan
+         sodipodi:role="line"
+         id="tspan28"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="143.26167"
+         y="273.70459">bois.largeur</tspan></text>
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0"
+       d="m 65.370299,212.85011 0,58.48667"
+       id="path28"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0"
+       d="m 79.502104,205.66126 0,75.51683"
+       id="path29"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0"
+       d="M 73.740001,212.34763 H 31.50633"
+       id="path30"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0"
+       d="M 73.700335,205.12384 H 31.50633"
+       id="path31"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.1309px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;letter-spacing:-0.0500893px;word-spacing:-0.125223px;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.631046;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:1.89314, 1.89314;stroke-dashoffset:0"
+       x="88.09008"
+       y="32.81926"
+       id="text31"><tspan
+         sodipodi:role="line"
+         id="tspan31"
+         style="stroke:none;stroke-width:0.631046"
+         x="88.065033"
+         y="32.81926">Batée simple</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.1309px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;letter-spacing:-0.0500893px;word-spacing:-0.125223px;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.631046;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:1.89314, 1.89314;stroke-dashoffset:0"
+       x="90.90387"
+       y="169.2005"
+       id="text32"><tspan
+         sodipodi:role="line"
+         id="tspan32"
+         style="stroke:none;stroke-width:0.631046"
+         x="90.878822"
+         y="169.2005">Batée double opposée</tspan></text>
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0"
+       d="m 106.70046,250.88835 0,22.33498"
+       id="path33"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0"
+       d="M 93.249279,250.34875 H 31.50633"
+       id="path34"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:0.9;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="31.207438"
+       y="251.36237"
+       id="text36"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="31.207438"
+         y="251.36237"
+         id="tspan36">batee.epaisseur</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="31.191563"
+         y="255.06815"
+         id="tspan39">- joint.epaisseur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:0.9;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:center;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="107.34593"
+       y="277.77905"
+       id="text40"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.7"
+         x="107.34593"
+         y="277.77905"
+         id="tspan40">batee.largeur</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.7"
+         x="107.338"
+         y="281.48483"
+         id="tspan41">+ joint.profondeur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:0.9;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="31.207438"
+       y="243.40759"
+       id="text43"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="31.191563"
+         y="243.40759"
+         id="tspan43">batee.epaisseur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:0.9;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:center;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="79.142685"
+       y="286.21591"
+       id="text45"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.7"
+         x="79.142685"
+         y="286.21591"
+         id="tspan45">bois.largeur</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.7"
+         x="79.13475"
+         y="289.92169"
+         id="tspan46">- batee.largeur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:0.9;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="31.207438"
+       y="199.34155"
+       id="text48"><tspan
+         sodipodi:role="line"
+         id="tspan47"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="31.207438"
+         y="199.34155">bois.epaisseur</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="31.207438"
+         y="203.04733"
+         id="tspan48">- batee.epaisseur</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="31.191565"
+         y="206.75311"
+         id="tspan49">+ joint.epaisseur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:0.9;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:center;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="56.72472"
+       y="272.71692"
+       id="text51"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.7"
+         x="56.72472"
+         y="272.71692"
+         id="tspan50">bois.largeur</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.7"
+         x="56.72472"
+         y="276.4227"
+         id="tspan51">- batee.largeur</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.7"
+         x="56.716782"
+         y="280.12848"
+         id="tspan52">- joint.profondeur</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;marker-end:url(#ConcaveTriangle)"
+       d="M 359.4828,123.97054 H 241.551 V 31.101698"
+       id="path53"
+       sodipodi:nodetypes="ccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:1.2;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="239.83884"
+       y="131.20897"
+       id="text53"><tspan
+         sodipodi:role="line"
+         id="tspan53"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="239.82295"
+         y="131.20897">0, 0</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:0.9;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="239.83884"
+       y="69.209892"
+       id="text55"><tspan
+         sodipodi:role="line"
+         id="tspan54"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="239.83884"
+         y="69.209892">bois.epaisseur</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="239.82297"
+         y="72.915672"
+         id="tspan55">- batee.epaisseur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:1.2;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="239.83884"
+       y="44.026257"
+       id="text56"><tspan
+         sodipodi:role="line"
+         id="tspan56"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="239.82297"
+         y="44.026257">Bois.epaisseur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:1.2;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="351.90894"
+       y="129.16258"
+       id="text58"><tspan
+         sodipodi:role="line"
+         id="tspan58"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="351.89307"
+         y="129.16258">bois.largeur</tspan></text>
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0"
+       d="M 274.00169,68.308098 V 126.79477"
+       id="path58"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0"
+       d="M 288.1335,61.119248 V 136.63608"
+       id="path59"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0"
+       d="M 282.3714,67.805618 H 240.13773"
+       id="path60"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0"
+       d="m 282.33173,60.581828 h -42.194"
+       id="path61"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.1309px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;letter-spacing:-0.0500893px;word-spacing:-0.125223px;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.631046;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:1.89314, 1.89314;stroke-dashoffset:0"
+       x="299.53528"
+       y="24.658487"
+       id="text61"><tspan
+         sodipodi:role="line"
+         id="tspan61"
+         style="stroke:none;stroke-width:0.631046"
+         x="299.51022"
+         y="24.658487">Batée double symétrique</tspan></text>
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0"
+       d="m 273.48629,105.27757 -33.17811,0"
+       id="path63"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:0.9;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="239.83884"
+       y="106.82035"
+       id="text64"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="239.83884"
+         y="106.82035"
+         id="tspan63">batee.epaisseur</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="239.82297"
+         y="110.52613"
+         id="tspan64">- joint.epaisseur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:0.9;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="239.83884"
+       y="98.865578"
+       id="text67"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="239.82297"
+         y="98.865578"
+         id="tspan67">batee.epaisseur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:0.9;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:center;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="287.77408"
+       y="141.6739"
+       id="text69"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.7"
+         x="287.77408"
+         y="141.6739"
+         id="tspan68">bois.largeur</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.7"
+         x="287.76614"
+         y="145.37968"
+         id="tspan69">- batee.largeur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:0.9;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="239.83884"
+       y="54.799541"
+       id="text72"><tspan
+         sodipodi:role="line"
+         id="tspan70"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="239.83884"
+         y="54.799541">bois.epaisseur</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="239.83884"
+         y="58.505318"
+         id="tspan71">- batee.epaisseur</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke:none;stroke-width:0.7"
+         x="239.82297"
+         y="62.211098"
+         id="tspan72">+ joint.epaisseur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:0.9;font-family:Alamain;-inkscape-font-specification:'Alamain, Normal';text-align:center;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       x="265.35611"
+       y="128.17491"
+       id="text75"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.7"
+         x="265.35611"
+         y="128.17491"
+         id="tspan73">bois.largeur</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.7"
+         x="265.35611"
+         y="131.88069"
+         id="tspan74">- batee.largeur</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.9;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.7"
+         x="265.34818"
+         y="135.58647"
+         id="tspan75">- joint.profondeur</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round"
+       d="m 242.36297,123.37299 h 45.76187 V 105.2852 h -14.1084 v -7.235107 h 69.63764 V 67.810328 h -69.63764 v -7.23508 h 14.1084 v -18.08769 h -45.76187 z"
+       id="path75"
+       sodipodi:nodetypes="ccccccccccccc" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0"
+       d="m 343.57578,98.723577 0,26.341943"
+       id="path76"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0"
+       d="M 273.48629,98.07071 H 240.30818"
+       id="path77"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>
