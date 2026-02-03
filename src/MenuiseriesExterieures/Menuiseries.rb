@@ -2,8 +2,7 @@ module I3D
   module MenuiseriesExterieures
 
     class Menuiserie
-      def initialize(pose, bati, ouvrant, jeu)
-        @pose = pose
+      def initialize(bati, ouvrant, jeu)
         @bati = bati
         @ouvrant = ouvrant
         @jeu = jeu
@@ -15,11 +14,11 @@ module I3D
       end
 
       def tracerBati()
-        @bati.tracer(@pose)
+        @bati.tracer()
       end
 
       def tracerOuvrant()
-        @ouvrant.tracer(@pose)
+        @ouvrant.tracer()
       end
     end
 
@@ -75,7 +74,7 @@ module I3D
     end
 
     class OuvrantFenetre < Ouvrant
-      def tracer(pose)
+      def tracer()
         
       end
     end
@@ -85,40 +84,41 @@ module I3D
     end
 
     class Bati < Structure
-      attr_accessor :hauteurImposte
+      attr_accessor :pose, :hauteurImposte
 
-      def initialize(profil, vitrage, hauteurImposte)
+      def initialize(profil, vitrage, pose, hauteurImposte)
         super(profil, vitrage)
+        @pose = pose
         @hauteurImposte = hauteurImposte
       end
 
-      def hauteurExterieure(pose)
-        return pose.tableau.hauteur + @profil.bois.largeur - pose.cochonnet
+      def hauteurExterieure()
+        return @pose.tableau.hauteur + @profil.bois.largeur - @pose.cochonnet
       end
 
-      def largeurExterieure(pose)
-        return pose.tableau.largeur + 2 * (@profil.bois.largeur - pose.cochonnet)
+      def largeurExterieure()
+        return @pose.tableau.largeur + 2 * (@profil.bois.largeur - @pose.cochonnet)
       end
     end
 
     class BatiFenetre < Bati
-      def tracer(pose)
+      def tracer()
         puts "tracer bati fenetre"
       end
 
-      def longueurMontant(pose)
-        return self.hauteurExterieure(pose) - 2 * (@profil.bois.largeur - @profil.batee.largeur)
+      def longueurMontant()
+        return self.hauteurExterieure() - 2 * (@profil.bois.largeur - @profil.batee.largeur)
       end
     end
 
     class BatiPorteFenetre < Bati
-      def initialize(profil, vitrage, hauteurImposte, seuil)
-        super(profil, vitrage, hauteurImposte)
+      def initialize(profil, vitrage, pose, hauteurImposte, seuil)
+        super(profil, vitrage, pose, hauteurImposte)
         @seuil = seuil
       end
 
-      def longueurMontant(pose)
-        return self.hauteurExterieure(pose) - (@profil.bois.largeur - @profil.batee.largeur)
+      def longueurMontant()
+        return self.hauteurExterieure() - (@profil.bois.largeur - @profil.batee.largeur)
       end
     end
 

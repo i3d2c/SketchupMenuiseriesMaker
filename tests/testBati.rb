@@ -36,20 +36,20 @@ class TestBati < Test::Unit::TestCase
     @joint = Joint.new(@epaisseurJoint, @profondeurJoint)
     @batee = Batee.new(@epaisseurBatee, @largeurBatee)
     @profil = Profil.new(@joint, @batee, @bois)
-    @bati = Bati.new(@profil, @vitrage, @hauteurImposte)
+    @bati = Bati.new(@profil, @vitrage, @pose, @hauteurImposte)
   end
 
   # def teardown
   # end
 
   def test_hauteurExterieure
-    result = @bati.hauteurExterieure(@pose)
+    result = @bati.hauteurExterieure()
 
     assert_equal(@hauteurTableau + @largeurBois - @cochonnet, result)
   end
 
   def test_largeurExterieure
-    result = @bati.largeurExterieure(@pose)
+    result = @bati.largeurExterieure()
 
     assert_equal(@largeurTableau + ((@largeurBois - @cochonnet) * 2), result)
   end
@@ -58,13 +58,13 @@ end
 class TestBatiFenetre < TestBati
   def setup
     super()
-    @bati = BatiFenetre.new(@profil, @vitrage, @hauteurImposte)
+    @bati = BatiFenetre.new(@profil, @vitrage, @pose, @hauteurImposte)
   end
 
   def test_longueurMontant
-    result = @bati.longueurMontant(@pose)
+    result = @bati.longueurMontant()
 
-    assert_equal(@bati.hauteurExterieure(@pose) - (@largeurBois - @largeurBatee) * 2, result)
+    assert_equal(@bati.hauteurExterieure() - (@largeurBois - @largeurBatee) * 2, result)
   end
 end
 
@@ -72,12 +72,12 @@ class TestBatiPorteFenetre < TestBati
   def setup
     super()
     @seuil = Seuil.new()
-    @bati = BatiPorteFenetre.new(@profil, @vitrage, @hauteurImposte, @seuil)
+    @bati = BatiPorteFenetre.new(@profil, @vitrage, @pose, @hauteurImposte, @seuil)
   end
 
   def test_longueurMontant
-    result = @bati.longueurMontant(@pose)
+    result = @bati.longueurMontant()
 
-    assert_equal(@bati.hauteurExterieure(@pose) - (@largeurBois - @largeurBatee), result)
+    assert_equal(@bati.hauteurExterieure() - (@largeurBois - @largeurBatee), result)
   end
 end
