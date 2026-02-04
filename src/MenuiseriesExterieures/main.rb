@@ -94,7 +94,7 @@ module I3D
 
       if isPorteFenetre then
         ouvrant = OuvrantPorteFenetre.new(profilOuvrant, vitrage, allegeHauteur)
-        bati = BatiPorteFenetre.new(profilBati, vitrage, imposteHauteur, seuil)
+        bati = BatiPorteFenetre.new(profilBati, vitrage, pose, imposteHauteur, seuil)
       else
         ouvrant = OuvrantFenetre.new(profilOuvrant, vitrage, allegeHauteur)
         bati = BatiFenetre.new(profilBati, vitrage, pose, imposteHauteur)

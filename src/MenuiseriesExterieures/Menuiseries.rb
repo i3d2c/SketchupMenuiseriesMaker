@@ -76,6 +76,10 @@ module I3D
         @hauteurAllege = hauteurAllege
       end
 
+      def tracer()
+        
+      end
+
     end
 
     class OuvrantFenetre < Ouvrant
@@ -97,6 +101,13 @@ module I3D
         @hauteurImposte = hauteurImposte
       end
 
+      def tracer()
+        self.tracerMontantGauche()
+        self.tracerMontantDroit()
+        self.tracerTraverseHaute()
+        self.tracerTraverseBasse()
+      end
+
       def hauteurExterieure()
         return @pose.tableau.hauteur + @profil.bois.largeur - @pose.cochonnet
       end
@@ -104,31 +115,10 @@ module I3D
       def largeurExterieure()
         return @pose.tableau.largeur + 2 * (@profil.bois.largeur - @pose.cochonnet)
       end
-    end
-
-    class BatiFenetre < Bati
-      def tracer()
-        puts "tracer bati fenetre"
-        self.tracerMontantGauche()
-        self.tracerMontantDroit()
-        self.tracerTraverseHaute()
-        self.tracerTraverseBasse()
-      end
-
-      def longueurMontant()
-        return self.hauteurExterieure() - 2 * (@profil.bois.largeur - @profil.batee.largeur)
-      end
 
       def tracerTraverseHaute()
         destination = Geom::Point3d.new(0, 0, self.hauteurExterieure() / 2 - @profil.bois.largeur / 2)
         rotation = 90
-        instance = self.profil.tracerSimplebatee(self.largeurExterieure())
-        self.positionner(instance, rotation, destination)
-      end
-
-      def tracerTraverseBasse()
-        destination = Geom::Point3d.new(0, 0, -(self.hauteurExterieure() / 2 - @profil.bois.largeur / 2))
-        rotation = -90
         instance = self.profil.tracerSimplebatee(self.largeurExterieure())
         self.positionner(instance, rotation, destination)
       end
@@ -148,6 +138,24 @@ module I3D
       end
     end
 
+    class BatiFenetre < Bati
+      def tracer()
+        puts "tracer bati fenetre"
+        super()
+      end
+
+      def longueurMontant()
+        return self.hauteurExterieure() - 2 * (@profil.bois.largeur - @profil.batee.largeur)
+      end
+
+      def tracerTraverseBasse()
+        destination = Geom::Point3d.new(0, 0, -(self.hauteurExterieure() / 2 - @profil.bois.largeur / 2))
+        rotation = -90
+        instance = self.profil.tracerSimplebatee(self.largeurExterieure())
+        self.positionner(instance, rotation, destination)
+      end
+    end
+
     class BatiPorteFenetre < Bati
       def initialize(profil, vitrage, pose, hauteurImposte, seuil)
         super(profil, vitrage, pose, hauteurImposte)
@@ -157,10 +165,47 @@ module I3D
       def longueurMontant()
         return self.hauteurExterieure() - (@profil.bois.largeur - @profil.batee.largeur)
       end
+
+      def tracer()
+        puts "tracer bati porte fenetre"
+        super()
+      end
+
+      def longueurMontant()
+        return self.hauteurExterieure() - 2 * (@profil.bois.largeur - @profil.batee.largeur)
+      end
+
+      def tracerTraverseBasse()
+        return self.tracerSeuil()
+      end
+
+      def tracerSeuil()
+        destination = Geom::Point3d.new(0, (@profil.bois.epaisseur - 5.6.cm) / 2, 1.35.cm - self.longueurMontant() / 2)
+        rotation = 0
+        instance = @seuil.tracer(self.largeurExterieure())
+        self.positionner(instance, rotation, destination)
+        return instance
+      end
     end
 
     class Seuil
-    
+      def tracer(longueur)
+        model = Sketchup.active_model
+        definition = model.definitions.add("Profil seuil Alu")
+        points = [
+          Geom::Point3d.new(0, 0, 0),
+          Geom::Point3d.new(0, 0, 0.2.cm),
+          Geom::Point3d.new(0, 5.3.cm, 1.1.cm),
+          Geom::Point3d.new(0, 5.3.cm, 2.7.cm),
+          Geom::Point3d.new(0, 5.6.cm, 2.7.cm),
+          Geom::Point3d.new(0, 5.6.cm, 0)
+        ]
+        face = definition.entities.add_face(points)
+        face.pushpull(longueur)
+        instance = model.entities.add_instance(definition, Geom::Transformation.new)
+        instance.make_unique
+        return instance
+      end
     end
 
     class Profil
