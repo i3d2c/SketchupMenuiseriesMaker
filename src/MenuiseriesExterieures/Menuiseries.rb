@@ -108,7 +108,8 @@ module I3D
         self.tracerMontantDroit()
         self.tracerTraverseHaute()
         self.tracerTraverseBasse()
-        self.tracerImposte()
+        self.tracerTraverseImposte()
+        self.tracerVitrageImposte()
       end
 
       def hauteurExterieure()
@@ -151,7 +152,7 @@ module I3D
         return instance
       end
 
-      def tracerImposte()
+      def tracerTraverseImposte()
         if @hauteurImposte <= 0 then
           return nil
         end
@@ -160,6 +161,17 @@ module I3D
         destination = Geom::Point3d.new(0, 0, self.hauteurExterieure() / 2 - self.hauteurTraverseIntermediaire())
         self.positionner(instance, rotation, destination)
         return instance
+      end
+
+      def tracerVitrageImposte()
+        if @hauteurImposte <= 0 then
+          return nil
+        end
+        largeur = self.largeurExterieure() - 2 * @profil.bois.largeur + 2 * @profil.batee.largeur
+        hauteur = self.hauteurTraverseIntermediaire() - 1.5 * @profil.bois.largeur + 2 * @profil.batee.largeur
+        difference = self.hauteurExterieure() / 2 - hauteur / 2 - @profil.bois.largeur + @profil.batee.largeur
+        destination = Geom::Point3d.new(0, 0, difference)
+        @vitrage.tracer(largeur, hauteur, destination)
       end
     end
 
@@ -192,7 +204,7 @@ module I3D
         largeur = self.largeurExterieure() - 2 * @profil.bois.largeur + 2 * @profil.batee.largeur
         if @hauteurImposte > 0 then
           hauteur = self.hauteurExterieure() - self.hauteurTraverseIntermediaire() - 1.5 * @profil.bois.largeur + 2 * @profil.batee.largeur
-          difference = self.hauteurTraverseIntermediaire()  - 0.5 * @profil.bois.largeur
+          difference = self.hauteurTraverseIntermediaire() - 0.5 * @profil.bois.largeur
           destination = Geom::Point3d.new(0, 0, -difference / 2)
         else
           hauteur = self.hauteurExterieure() - 2 * @profil.bois.largeur + 2 * @profil.batee.largeur
@@ -408,6 +420,12 @@ module I3D
         instance.transform!(transformation)
       end
     end
+
+
+
+
+
+
 
     @prixUnit = 18
     @prixMlSeuil = 34
