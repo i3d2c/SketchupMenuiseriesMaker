@@ -58,8 +58,13 @@ module I3D
         @vitrage = vitrage
       end
 
-      def tracer(pose)
-                
+      def positionner(instance, rotation, destination)
+        translation_vector = destination - instance.bounds.center
+        instance.transform!(Geom::Transformation.new(translation_vector))
+        point = instance.bounds.center
+        axis = [0, 1, 0]
+        transformation = Geom::Transformation.rotation(point, axis, rotation.degrees)
+        instance.transform!(transformation)
       end
     end
 
@@ -104,10 +109,42 @@ module I3D
     class BatiFenetre < Bati
       def tracer()
         puts "tracer bati fenetre"
+        self.tracerMontantGauche()
+        self.tracerMontantDroit()
+        self.tracerTraverseHaute()
+        self.tracerTraverseBasse()
       end
 
       def longueurMontant()
         return self.hauteurExterieure() - 2 * (@profil.bois.largeur - @profil.batee.largeur)
+      end
+
+      def tracerTraverseHaute()
+        destination = Geom::Point3d.new(0, 0, self.hauteurExterieure() / 2 - @profil.bois.largeur / 2)
+        rotation = 90
+        instance = self.profil.tracerSimplebatee(self.largeurExterieure())
+        self.positionner(instance, rotation, destination)
+      end
+
+      def tracerTraverseBasse()
+        destination = Geom::Point3d.new(0, 0, -(self.hauteurExterieure() / 2 - @profil.bois.largeur / 2))
+        rotation = -90
+        instance = self.profil.tracerSimplebatee(self.largeurExterieure())
+        self.positionner(instance, rotation, destination)
+      end
+
+      def tracerMontantDroit()
+        destination = Geom::Point3d.new(-(self.largeurExterieure() / 2 - @profil.bois.largeur / 2), 0, 0)
+        rotation = 0
+        instance = self.profil.tracerSimplebatee(self.longueurMontant())
+        self.positionner(instance, rotation, destination)
+      end
+
+      def tracerMontantGauche()
+        destination = Geom::Point3d.new(self.largeurExterieure() / 2 - @profil.bois.largeur / 2, 0, 0)
+        rotation = 180
+        instance = self.profil.tracerSimplebatee(self.longueurMontant())
+        self.positionner(instance, rotation, destination)
       end
     end
 
@@ -672,7 +709,6 @@ module I3D
         destination_point = Geom::Point3d.new(@largExt / 2 - (@boisBatiLarg / 2), 0, 0)  # point de destination
         angleRotation = 180
         batiMG = profilUneBatee("Profil 1", @batiMontantlongSiPasPF, "Bati - Montant gauche", angleRotation, destination_point)
-        # bati Traverse haute
         # bati Traverse basse
         destination_point = Geom::Point3d.new(0, 0, - (@hautExt / 2 - @boisBatiLarg / 2))
         angleRotation =- 90
