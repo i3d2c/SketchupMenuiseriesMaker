@@ -106,6 +106,7 @@ module I3D
         self.tracerMontantDroit()
         self.tracerTraverseHaute()
         self.tracerTraverseBasse()
+        self.tracerImposte()
       end
 
       def hauteurExterieure()
@@ -116,25 +117,47 @@ module I3D
         return @pose.tableau.largeur + 2 * (@profil.bois.largeur - @pose.cochonnet)
       end
 
+      def largeurTraverseIntermediaire()
+        return self.largeurExterieure() - 2 * (@profil.bois.largeur - @profil.batee.largeur)
+      end
+
+      def hauteurTraverseIntermediaire()
+        return @hauteurImposte + @profil.bois.largeur - @pose.cochonnet
+      end
+
       def tracerTraverseHaute()
-        destination = Geom::Point3d.new(0, 0, self.hauteurExterieure() / 2 - @profil.bois.largeur / 2)
-        rotation = 90
         instance = self.profil.tracerSimplebatee(self.largeurExterieure())
+        rotation = 90
+        destination = Geom::Point3d.new(0, 0, self.hauteurExterieure() / 2 - @profil.bois.largeur / 2)
         self.positionner(instance, rotation, destination)
+        return instance
       end
 
       def tracerMontantDroit()
-        destination = Geom::Point3d.new(-(self.largeurExterieure() / 2 - @profil.bois.largeur / 2), 0, 0)
-        rotation = 0
         instance = self.profil.tracerSimplebatee(self.longueurMontant())
+        rotation = 0
+        destination = Geom::Point3d.new(-(self.largeurExterieure() / 2 - @profil.bois.largeur / 2), 0, 0)
         self.positionner(instance, rotation, destination)
+        return instance
       end
 
       def tracerMontantGauche()
-        destination = Geom::Point3d.new(self.largeurExterieure() / 2 - @profil.bois.largeur / 2, 0, 0)
-        rotation = 180
         instance = self.profil.tracerSimplebatee(self.longueurMontant())
+        rotation = 180
+        destination = Geom::Point3d.new(self.largeurExterieure() / 2 - @profil.bois.largeur / 2, 0, 0)
         self.positionner(instance, rotation, destination)
+        return instance
+      end
+
+      def tracerImposte()
+        if @hauteurImposte <= 0 then
+          return nil
+        end
+        instance = self.profil.tracerDoubleBateesSymetriques(self.largeurTraverseIntermediaire())
+        rotation = 90
+        destination = Geom::Point3d.new(0, 0, self.hauteurExterieure() / 2 - self.hauteurTraverseIntermediaire())
+        self.positionner(instance, rotation, destination)
+        return instance
       end
     end
 
@@ -149,10 +172,11 @@ module I3D
       end
 
       def tracerTraverseBasse()
-        destination = Geom::Point3d.new(0, 0, -(self.hauteurExterieure() / 2 - @profil.bois.largeur / 2))
-        rotation = -90
         instance = self.profil.tracerSimplebatee(self.largeurExterieure())
+        rotation = -90
+        destination = Geom::Point3d.new(0, 0, -(self.hauteurExterieure() / 2 - @profil.bois.largeur / 2))
         self.positionner(instance, rotation, destination)
+        return instance
       end
     end
 
@@ -180,9 +204,9 @@ module I3D
       end
 
       def tracerSeuil()
-        destination = Geom::Point3d.new(0, (@profil.bois.epaisseur - 5.6.cm) / 2, 1.35.cm - self.longueurMontant() / 2)
-        rotation = 0
         instance = @seuil.tracer(self.largeurExterieure())
+        rotation = 0
+        destination = Geom::Point3d.new(0, (@profil.bois.epaisseur - 5.6.cm) / 2, 1.35.cm - self.longueurMontant() / 2)
         self.positionner(instance, rotation, destination)
         return instance
       end
@@ -267,18 +291,17 @@ module I3D
         definition = model.definitions.add("Profil 3")
         points = [
           Geom::Point3d.new(0, 0, 0),
-          Geom::Point3d.new(0, @bois.epaisseur, 0),
+          Geom::Point3d.new(0, @bois.epaisseur - @batee.epaisseur, 0),
+          Geom::Point3d.new(@batee.largeur + @joint.profondeurRainure, @bois.epaisseur - @batee.epaisseur, 0),
+          Geom::Point3d.new(@batee.largeur + @joint.profondeurRainure, @bois.epaisseur - @batee.epaisseur + @joint.epaisseurRainure, 0),
+          Geom::Point3d.new(@batee.largeur, @bois.epaisseur - @batee.epaisseur + @joint.epaisseurRainure, 0),
+          Geom::Point3d.new(@batee.largeur, @bois.epaisseur, 0),
           Geom::Point3d.new(@bois.largeur - @batee.largeur, @bois.epaisseur, 0),
           Geom::Point3d.new(@bois.largeur - @batee.largeur, @bois.epaisseur - @batee.epaisseur + @joint.epaisseurRainure, 0),
           Geom::Point3d.new(@bois.largeur - @batee.largeur - @joint.profondeurRainure, @bois.epaisseur - @batee.epaisseur + @joint.epaisseurRainure, 0),
           Geom::Point3d.new(@bois.largeur - @batee.largeur - @joint.profondeurRainure, @bois.epaisseur - @batee.epaisseur, 0),
           Geom::Point3d.new(@bois.largeur, @bois.epaisseur - @batee.epaisseur, 0),
-          Geom::Point3d.new(@bois.largeur, @batee.epaisseur, 0),
-          Geom::Point3d.new(@bois.largeur - @batee.largeur - @joint.profondeurRainure, @batee.epaisseur, 0),
-          Geom::Point3d.new(@bois.largeur - @batee.largeur - @joint.profondeurRainure, @batee.epaisseur - @joint.epaisseurRainure, 0),
-          Geom::Point3d.new(@bois.largeur - @batee.largeur, @batee.epaisseur - @joint.epaisseurRainure, 0),
-          Geom::Point3d.new(@bois.largeur - @batee.largeur, 0, 0),
-          Geom::Point3d.new(0, 0, 0)
+          Geom::Point3d.new(@bois.largeur, 0, 0)
         ]
         face = definition.entities.add_face(points)
         face.pushpull(longueur)
@@ -309,9 +332,9 @@ module I3D
     class Bois
       attr_accessor :epaisseur, :largeur
 
-      def initialize(largeur, epaisseur)
-        @largeur = largeur
+      def initialize(epaisseur, largeur)
         @epaisseur = epaisseur
+        @largeur = largeur
       end
     end
 
