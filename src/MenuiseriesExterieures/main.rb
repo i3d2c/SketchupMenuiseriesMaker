@@ -20,10 +20,9 @@ module I3D
     @tableauHaut = 200.cm
     @imposteHauteur = 50.cm
     @allegeHauteur = 50.cm
-    @nombreOuvrant = 1
-    @porteFenetre = "Oui"
+    @nombreOuvrant = 0
 
-    def self.creer_fenetre
+    def self.prompt
       prompts = [
         "Cochonnet :", 
         "Epaisseur bois :", 
@@ -42,7 +41,6 @@ module I3D
         "Hauteur imposte:", 
         "Hauteur allege:", 
         "Nombre d'Ouvrant:", 
-        "Porte Fenetre? :"
       ]
 
       # Conversion pour affichage (en mm)
@@ -64,17 +62,26 @@ module I3D
         @imposteHauteur.to_mm.round(),
         @allegeHauteur.to_mm.round(),
         @nombreOuvrant.to_i, 
-        @porteFenetre
       ]
-      listes = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "0|1|2", "Oui|Non"]
+      listes = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "0|1|2"]
 
       results = UI.inputbox(prompts, defaults, listes, "Dimensions des profils bois")
       
-      return if results == nil || results == false
+      return results
+    end
 
-      self.tracerMenuiserie(results[0].mm, results[1].mm, results[2].mm, results[3].mm, results[4].mm,
-      results[5].mm, results[6].mm, results[7].mm, results[8].mm, results[9].mm, results[10].mm, results[11],
-      results[12].mm, results[13].mm, results[14].mm, results[15].mm, results[16], results[17] == "Oui")
+    def self.creerFenetre()
+      dimensions = self.prompt()
+      self.tracerMenuiserie(dimensions[0].mm, dimensions[1].mm, dimensions[2].mm, dimensions[3].mm, dimensions[4].mm,
+      dimensions[5].mm, dimensions[6].mm, dimensions[7].mm, dimensions[8].mm, dimensions[9].mm, dimensions[10].mm, dimensions[11],
+      dimensions[12].mm, dimensions[13].mm, dimensions[14].mm, dimensions[15].mm, dimensions[16], false)
+    end
+
+    def self.creerPorteFenetre()
+      dimensions = self.prompt()
+      self.tracerMenuiserie(dimensions[0].mm, dimensions[1].mm, dimensions[2].mm, dimensions[3].mm, dimensions[4].mm,
+      dimensions[5].mm, dimensions[6].mm, dimensions[7].mm, dimensions[8].mm, dimensions[9].mm, dimensions[10].mm, dimensions[11],
+      dimensions[12].mm, dimensions[13].mm, dimensions[14].mm, dimensions[15].mm, dimensions[16], true)
     end
 
     def self.tracerMenuiserie(cochonnet, boisEp, boisLarg, boisBatiLarg, bateeEp, bateeLarg,
@@ -96,8 +103,13 @@ module I3D
         ouvrant = OuvrantPorteFenetre.new(profilOuvrant, vitrage, allegeHauteur)
         bati = BatiPorteFenetre.new(profilBati, vitrage, pose, imposteHauteur, seuil)
       else
-        ouvrant = OuvrantFenetre.new(profilOuvrant, vitrage, allegeHauteur)
-        bati = BatiFenetre.new(profilBati, vitrage, pose, imposteHauteur)
+        if nombreOuvrant == 0 then
+          ouvrant = nil
+          bati = BatiFenetreFixe.new(profilBati, vitrage, pose, imposteHauteur)          
+        else
+          ouvrant = OuvrantFenetre.new(profilOuvrant, vitrage, allegeHauteur)
+          bati = BatiFenetre.new(profilBati, vitrage, pose, imposteHauteur)
+        end
       end
       
       menuiserie = Menuiserie.new(bati, ouvrant, jeu)
@@ -107,8 +119,11 @@ module I3D
 
     unless file_loaded?(__FILE__)
       menu = UI.menu('Plugins')
-      menu.add_item('01 Créer une fenêtre') {
-        self.creer_fenetre
+      menu.add_item('Créer une FENÊTRE') {
+        self.creerFenetre
+      }
+      menu.add_item('Créer une PORTE FENÊTRE') {
+        self.creerPorteFenetre
       }
       file_loaded(__FILE__)
     end

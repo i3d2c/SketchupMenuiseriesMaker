@@ -18,7 +18,9 @@ module I3D
       end
 
       def tracerOuvrant()
-        @ouvrant.tracer()
+        unless @ouvrant == nil then
+          @ouvrant.tracer()
+        end 
       end
     end
 
@@ -177,6 +179,26 @@ module I3D
         destination = Geom::Point3d.new(0, 0, -(self.hauteurExterieure() / 2 - @profil.bois.largeur / 2))
         self.positionner(instance, rotation, destination)
         return instance
+      end
+    end
+
+    class BatiFenetreFixe < BatiFenetre
+      def tracer()
+        super()
+        self.tracerVitrage()
+      end
+
+      def tracerVitrage()
+        largeur = self.largeurExterieure() - 2 * @profil.bois.largeur + 2 * @profil.batee.largeur
+        if @hauteurImposte > 0 then
+          hauteur = self.hauteurExterieure() - self.hauteurTraverseIntermediaire() - 1.5 * @profil.bois.largeur + 2 * @profil.batee.largeur
+          difference = self.hauteurTraverseIntermediaire()  - 0.5 * @profil.bois.largeur
+          destination = Geom::Point3d.new(0, 0, -difference / 2)
+        else
+          hauteur = self.hauteurExterieure() - 2 * @profil.bois.largeur + 2 * @profil.batee.largeur
+          destination = Geom::Point3d.new(0, 0, 0)
+        end
+        @vitrage.tracer(largeur, hauteur, destination)
       end
     end
 
@@ -344,6 +366,46 @@ module I3D
       def initialize(epaisseur, jeu)
         @epaisseur = epaisseur
         @jeu = jeu
+      end
+
+      def tracer(largeur, hauteur, destination)
+        largeur = largeur - 2 * @jeu
+        hauteur = hauteur - 2 * @jeu
+        model = Sketchup.active_model
+        points = [
+          Geom::Point3d.new(0, 0, 0),
+          Geom::Point3d.new(0, 0, hauteur),
+          Geom::Point3d.new(largeur, 0, hauteur),
+          Geom::Point3d.new(largeur, 0, 0)
+        ]
+        instance = model.active_entities.add_group
+        self.appliquerTexture(instance)
+        face = instance.entities.add_face(points)
+        face.pushpull(@epaisseur)
+        rotation = 0
+        self.positionner(instance, rotation, destination)
+        return instance
+      end
+
+      def appliquerTexture(instance)
+        materials = Sketchup.active_model.materials
+        mat = materials["Vitrage"] || materials.add("Vitrage")
+        mat.alpha = 0.3
+        mat.color = Sketchup::Color.new(180, 220, 255)
+        
+        instance.material = mat
+        instance.name = "Vitrage"
+        instance.entities.each { |e| e.material = mat if e.respond_to?(:material=) }
+        return instance
+      end
+
+      def positionner(instance, rotation, destination)
+        translation_vector = destination - instance.bounds.center
+        instance.transform!(Geom::Transformation.new(translation_vector))
+        point = instance.bounds.center
+        axis = [0, 1, 0]
+        transformation = Geom::Transformation.rotation(point, axis, rotation.degrees)
+        instance.transform!(transformation)
       end
     end
 
