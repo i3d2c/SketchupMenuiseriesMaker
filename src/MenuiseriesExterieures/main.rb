@@ -1,6 +1,20 @@
 require 'sketchup.rb'
 require 'MenuiseriesExterieures/debug'
 require 'MenuiseriesExterieures/Menuiseries'
+require 'MenuiseriesExterieures/Pose'
+require 'MenuiseriesExterieures/Tableau'
+require 'MenuiseriesExterieures/Seuil'
+require 'MenuiseriesExterieures/Joint'
+require 'MenuiseriesExterieures/Batee'
+require 'MenuiseriesExterieures/Bois'
+require 'MenuiseriesExterieures/Profil'
+require 'MenuiseriesExterieures/Batis'
+require 'MenuiseriesExterieures/Ouvertures'
+require 'MenuiseriesExterieures/OuvertureVide'
+require 'MenuiseriesExterieures/Remplissages'
+
+
+@toto = nil
 
 module I3D
   module MenuiseriesExterieures
@@ -20,7 +34,7 @@ module I3D
     @tableauHaut = 200.cm
     @imposteHauteur = 50.cm
     @allegeHauteur = 50.cm
-    @nombreOuvrant = 0
+    @nombreOuvrant = 1
 
     def self.prompt
       prompts = [
@@ -93,28 +107,25 @@ module I3D
       batee = Batee.new(bateeEp, bateeLarg)
       joint = Joint.new(jointRainEp, jointRainProf)
       boisBati = Bois.new(boisEp, boisBatiLarg)
-      boisOuvrant = Bois.new(boisEp, boisLarg)
+      # boisOuvrant = Bois.new(boisEp, boisLarg)
       profilBati = Profil.new(joint, batee, boisBati)
-      profilOuvrant = Profil.new(joint, batee, boisOuvrant)
-      vitrage = Vitrage.new(epVerre, jeuVerre)
+      # profilOuvrant = Profil.new(joint, batee, boisOuvrant)
+      # vitrage = RemplissageVitrage.new(epVerre, jeuVerre)
       seuil = Seuil.new()
 
       if isPorteFenetre then
-        ouvrant = OuvrantPorteFenetre.new(profilOuvrant, vitrage, allegeHauteur)
-        bati = BatiPorteFenetre.new(profilBati, vitrage, pose, imposteHauteur, seuil)
+        bati = BatiPorteFenetre.new(profilBati, pose, seuil)
       else
-        if nombreOuvrant == 0 then
-          ouvrant = nil
-          bati = BatiFenetreFixe.new(profilBati, vitrage, pose, imposteHauteur)          
-        else
-          ouvrant = OuvrantFenetre.new(profilOuvrant, vitrage, allegeHauteur)
-          bati = BatiFenetre.new(profilBati, vitrage, pose, imposteHauteur)
-        end
+        bati = BatiFenetre.new(profilBati, pose)
       end
       
-      menuiserie = Menuiserie.new(bati, ouvrant, jeu)
+      @menuiserie = Menuiserie.new(bati, jeu)
 
-      menuiserie.tracer()
+      @menuiserie.tracer()
+    end
+
+    def self.getMenuiserie()
+      return @menuiserie
     end
 
     unless file_loaded?(__FILE__)

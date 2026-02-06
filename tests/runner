@@ -1,2 +1,28 @@
 require 'test/unit'
+
+require_relative '../src/MenuiseriesExterieures/Tableau'
+require_relative '../src/MenuiseriesExterieures/Pose'
+require_relative '../src/MenuiseriesExterieures/Bois'
+require_relative '../src/MenuiseriesExterieures/Joint'
+require_relative '../src/MenuiseriesExterieures/Batee'
+require_relative '../src/MenuiseriesExterieures/Profil'
+require_relative '../src/MenuiseriesExterieures/Seuil'
+require_relative '../src/MenuiseriesExterieures/Batis'
+require_relative '../src/MenuiseriesExterieures/Ouvertures'
+require_relative '../src/MenuiseriesExterieures/OuvertureVide'
+
+Tableau = I3D::MenuiseriesExterieures::Tableau
+Pose = I3D::MenuiseriesExterieures::Pose
+Bois = I3D::MenuiseriesExterieures::Bois
+Joint = I3D::MenuiseriesExterieures::Joint
+Batee = I3D::MenuiseriesExterieures::Batee
+Profil = I3D::MenuiseriesExterieures::Profil
+Seuil = I3D::MenuiseriesExterieures::Seuil
+Structure = I3D::MenuiseriesExterieures::Structure
+Bati = I3D::MenuiseriesExterieures::Bati
+BatiFenetre = I3D::MenuiseriesExterieures::BatiFenetre
+BatiPorteFenetre = I3D::MenuiseriesExterieures::BatiPorteFenetre
+OuvertureVide = I3D::MenuiseriesExterieures::OuvertureVide
+
 require_relative  'testBati'
+require_relative  'testOuvertureVide'

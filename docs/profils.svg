@@ -23,17 +23,54 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:document-units="mm"
-     inkscape:zoom="0.1940324"
-     inkscape:cx="1327.098"
-     inkscape:cy="600.41519"
-     inkscape:window-width="869"
+     inkscape:zoom="1.097613"
+     inkscape:cx="2325.0453"
+     inkscape:cy="1326.9704"
+     inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="layer1" />
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showguides="true" />
   <defs
      id="defs1">
+    <marker
+       style="overflow:visible"
+       id="marker32"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide, heavy arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         d="m 1,0 -3,3 h -2 l 3,-3 -3,-3 h 2 z"
+         id="path32" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="ArrowWideHeavy"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide, heavy arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         d="m 1,0 -3,3 h -2 l 3,-3 -3,-3 h 2 z"
+         id="path27" />
+    </marker>
     <marker
        style="overflow:visible"
        id="ConcaveTriangle"
@@ -603,5 +640,403 @@
        d="M 273.48629,98.07071 H 240.30818"
        id="path77"
        sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       d="m 299.87041,270.46189 0,23.62325 h 11.57057 v -12.05267 h 12.05268 l 0,-11.57058 z"
+       id="path3"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       style="fill:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       d="m 427.80936,270.46189 v 23.62325 h -11.57057 v -12.05267 h -12.05268 v -11.57058 z"
+       id="path4"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       style="fill:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       d="m 299.87041,435.21814 v -23.62325 h 11.57057 v 12.05267 h 12.05268 v 11.57058 z"
+       id="path5"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       style="fill:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       d="m 427.80936,435.21814 v -23.62325 h -11.57057 v 12.05267 h -12.05268 v 11.57058 z"
+       id="path6"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       style="fill:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       d="m 299.87041,349.69212 v 34.95276 h 11.57057 v -12.05267 h 12.05268 v -11.57058 h -12.05268 v -11.32951 z"
+       id="path8"
+       sodipodi:nodetypes="ccccccccc" />
+    <path
+       style="fill:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       d="m 427.80936,349.69212 v 34.95276 h -11.57057 v -12.05267 h -12.05268 v -11.57058 h 12.05268 v -11.32951 z"
+       id="path13"
+       sodipodi:nodetypes="ccccccccc" />
+    <g
+       id="g15"
+       transform="translate(1.416115,-3.89502)">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+         d="m 360.85692,324.21681 3.1337,3.13368"
+         id="path14" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+         d="m 360.85692,327.35049 3.1337,-3.13368"
+         id="path15" />
+    </g>
+    <g
+       id="g19"
+       transform="translate(1.416115,27.056365)">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+         d="m 360.85692,324.21681 3.1337,3.13368"
+         id="path18" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+         d="m 360.85692,327.35049 3.1337,-3.13368"
+         id="path19" />
+    </g>
+    <g
+       id="g21"
+       transform="translate(1.416115,72.336235)">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+         d="m 360.85692,324.21681 3.1337,3.13368"
+         id="path20" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+         d="m 360.85692,327.35049 3.1337,-3.13368"
+         id="path21" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1;font-family:Arial;-inkscape-font-specification:Arial;text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       x="372.36722"
+       y="351.3353"
+       id="text21"><tspan
+         sodipodi:role="line"
+         id="tspan21"
+         style="fill:#000000;stroke:none;stroke-width:1"
+         x="372.35135"
+         y="351.3353">O⁰</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1;font-family:Arial;-inkscape-font-specification:Arial;text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       x="372.36722"
+       y="321.32416"
+       id="text24"><tspan
+         sodipodi:role="line"
+         id="tspan24"
+         style="fill:#000000;stroke:none;stroke-width:1"
+         x="372.35135"
+         y="321.32416">O¹</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1;font-family:Arial;-inkscape-font-specification:Arial;text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       x="372.36722"
+       y="396.29175"
+       id="text26"><tspan
+         sodipodi:role="line"
+         id="tspan26"
+         style="fill:#000000;stroke:none;stroke-width:1"
+         x="372.35135"
+         y="396.29175">O²</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.8;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.8, 1.6;stroke-dashoffset:0;marker-start:url(#ArrowWideHeavy);marker-end:url(#marker32)"
+       d="m 338.74026,282.80082 0,140.05242"
+       id="path26"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.8;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.8, 1.6;stroke-dashoffset:0;marker-start:url(#ArrowWideHeavy);marker-end:url(#marker32)"
+       d="m 316.8044,373.3917 0,49.46154"
+       id="path35"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.8;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.8, 1.6;stroke-dashoffset:0;marker-start:url(#ArrowWideHeavy);marker-end:url(#marker32)"
+       d="M 327.6518,282.80082 V 360.2512"
+       id="path36"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1;font-family:Arial;-inkscape-font-specification:Arial;text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       x="346.09241"
+       y="355.07162"
+       id="text37"><tspan
+         sodipodi:role="line"
+         id="tspan37"
+         style="fill:#000000;stroke:none;stroke-width:1"
+         x="346.07654"
+         y="355.07162">h⁰</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1;font-family:Arial;-inkscape-font-specification:Arial;text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       x="334.28079"
+       y="322.0473"
+       id="text38"><tspan
+         sodipodi:role="line"
+         id="tspan38"
+         style="fill:#000000;stroke:none;stroke-width:1"
+         x="334.26492"
+         y="322.0473">h¹</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1;font-family:Arial;-inkscape-font-specification:Arial;text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       x="324.15656"
+       y="397.49701"
+       id="text42"><tspan
+         sodipodi:role="line"
+         id="tspan42"
+         style="fill:#000000;stroke:none;stroke-width:1"
+         x="324.14069"
+         y="397.49701">h²</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.799999;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.799999, 1.6;stroke-dashoffset:0"
+       x="379.78305"
+       y="307.49268"
+       id="text44"><tspan
+         sodipodi:role="line"
+         id="tspan44"
+         style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.8"
+         x="379.78305"
+         y="307.49268">h⁰ = tableau.hauteur - 2*(bois - batee)</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.8"
+         x="379.78305"
+         y="312.43158"
+         id="tspan57">h¹ = donnée utilisateur</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.8"
+         x="379.78305"
+         y="317.37048"
+         id="tspan59">h² = h⁰ - h¹ - (bois - 2 batees)</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.8"
+         x="379.78305"
+         y="322.30939"
+         id="tspan60" /><tspan
+         sodipodi:role="line"
+         style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.8"
+         x="379.78305"
+         y="327.24829"
+         id="tspan62">O⁰ = origine</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.8"
+         x="379.78305"
+         y="332.18716"
+         id="tspan65">O¹ = O⁰ + h⁰/2 - h¹/2</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.8"
+         x="379.78305"
+         y="337.12607"
+         id="tspan66">O² = O⁰ + h⁰/2 - h¹ - (bois - 2 batees) - h²/2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:17.2531px;line-height:1;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;letter-spacing:-0.0554564px;word-spacing:-0.138641px;text-anchor:start;fill:#000000;stroke:none;stroke-width:2.79465;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:2.79465, 5.58931;stroke-dashoffset:0"
+       x="300.84882"
+       y="261.15756"
+       id="text76"><tspan
+         sodipodi:role="line"
+         id="tspan76"
+         style="stroke-width:2.79465"
+         x="300.84882"
+         y="261.15756">Division verticale</tspan></text>
+    <path
+       style="fill:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       d="M 501.78455,401.38207 H 525.4078 V 389.8115 h -12.05267 v -12.05268 h -11.57058 z"
+       id="path78"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       style="fill:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       d="m 501.78455,273.44312 h 23.62325 v 11.57057 h -12.05267 v 12.05268 h -11.57058 z"
+       id="path79"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       style="fill:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       d="M 666.5408,401.38207 H 642.91755 V 389.8115 h 12.05267 v -12.05268 h 11.57058 z"
+       id="path80"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       style="fill:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       d="m 666.5408,273.44312 h -23.62325 v 11.57057 h 12.05267 v 12.05268 h 11.57058 z"
+       id="path81"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       style="fill:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       d="m 581.01478,401.38207 h 34.95276 V 389.8115 h -12.05267 v -12.05268 h -11.57058 v 12.05268 h -11.32951 z"
+       id="path82"
+       sodipodi:nodetypes="ccccccccc" />
+    <path
+       style="fill:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       d="m 581.01478,273.44312 h 34.95276 v 11.57057 h -12.05267 v 12.05268 h -11.57058 v -12.05268 h -11.32951 z"
+       id="path83"
+       sodipodi:nodetypes="ccccccccc" />
+    <g
+       id="g85"
+       transform="rotate(-90,463.632,236.20436)">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+         d="m 360.85692,324.21681 3.1337,3.13368"
+         id="path84" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+         d="m 360.85692,327.35049 3.1337,-3.13368"
+         id="path85" />
+    </g>
+    <g
+       id="g87"
+       transform="rotate(-90,479.10769,220.72867)">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+         d="m 360.85692,324.21681 3.1337,3.13368"
+         id="path86" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+         d="m 360.85692,327.35049 3.1337,-3.13368"
+         id="path87" />
+    </g>
+    <g
+       id="g89"
+       transform="rotate(-90,501.74763,198.08873)">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+         d="m 360.85692,324.21681 3.1337,3.13368"
+         id="path88" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+         d="m 360.85692,327.35049 3.1337,-3.13368"
+         id="path89" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1;font-family:Arial;-inkscape-font-specification:Arial;text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       x="590.76166"
+       y="333.97943"
+       id="text89"><tspan
+         sodipodi:role="line"
+         id="tspan89"
+         style="fill:#000000;stroke:none;stroke-width:1"
+         x="590.74579"
+         y="333.97943">O⁰</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1;font-family:Arial;-inkscape-font-specification:Arial;text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       x="559.18359"
+       y="333.37683"
+       id="text90"><tspan
+         sodipodi:role="line"
+         id="tspan90"
+         style="fill:#000000;stroke:none;stroke-width:1"
+         x="559.16772"
+         y="333.37683">O¹</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1;font-family:Arial;-inkscape-font-specification:Arial;text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       x="637.28491"
+       y="333.85892"
+       id="text91"><tspan
+         sodipodi:role="line"
+         id="tspan91"
+         style="fill:#000000;stroke:none;stroke-width:1"
+         x="637.26904"
+         y="333.85892">O²</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.8;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.8, 1.6;stroke-dashoffset:0;marker-start:url(#ArrowWideHeavy);marker-end:url(#marker32)"
+       d="M 514.12348,362.51222 H 654.1759"
+       id="path91"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.8;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.8, 1.6;stroke-dashoffset:0;marker-start:url(#ArrowWideHeavy);marker-end:url(#marker32)"
+       d="M 604.71436,384.44808 H 654.1759"
+       id="path92"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.8;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.8, 1.6;stroke-dashoffset:0;marker-start:url(#ArrowWideHeavy);marker-end:url(#marker32)"
+       d="m 514.12348,373.60068 h 77.45038"
+       id="path93"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1;font-family:Arial;-inkscape-font-specification:Arial;text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       x="588.35107"
+       y="359.8927"
+       id="text93"><tspan
+         sodipodi:role="line"
+         id="tspan93"
+         style="fill:#000000;stroke:none;stroke-width:1"
+         x="588.33521"
+         y="359.8927">L⁰</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1;font-family:Arial;-inkscape-font-specification:Arial;text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       x="554.36255"
+       y="378.69485"
+       id="text94"><tspan
+         sodipodi:role="line"
+         id="tspan94"
+         style="fill:#000000;stroke:none;stroke-width:1"
+         x="554.34668"
+         y="378.69485">L¹</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1;font-family:Arial;-inkscape-font-specification:Arial;text-align:end;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:end;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round"
+       x="629.08911"
+       y="382.79276"
+       id="text95"><tspan
+         sodipodi:role="line"
+         id="tspan95"
+         style="fill:#000000;stroke:none;stroke-width:1"
+         x="629.07324"
+         y="382.79276">L²</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;letter-spacing:-0.015875px;word-spacing:-0.0396875px;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.799999;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:0.799999, 1.6;stroke-dashoffset:0"
+       x="649.2807"
+       y="315.20636"
+       id="text102"><tspan
+         sodipodi:role="line"
+         id="tspan96"
+         style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.8"
+         x="649.2807"
+         y="315.20636">L⁰ = tableau.largeur - 2*(bois - batee)</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.8"
+         x="649.2807"
+         y="320.14526"
+         id="tspan97">L¹ = donnée utilisateur</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.8"
+         x="649.2807"
+         y="325.08417"
+         id="tspan98">L² = L⁰ - L¹ - (bois - 2 batees)</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.8"
+         x="649.2807"
+         y="330.02307"
+         id="tspan99" /><tspan
+         sodipodi:role="line"
+         style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.8"
+         x="649.2807"
+         y="334.96198"
+         id="tspan100">O⁰ = origine</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.8"
+         x="649.2807"
+         y="339.90085"
+         id="tspan101">O¹ = O⁰ - L⁰/2 + L¹/2</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.8"
+         x="649.2807"
+         y="344.83975"
+         id="tspan102">O² = O⁰ - L⁰/2 + L¹ + (bois - 2 batees) + L²/2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:17.2531px;line-height:1;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;letter-spacing:-0.0554564px;word-spacing:-0.138641px;text-anchor:start;fill:#000000;stroke:none;stroke-width:2.79465;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:2.79465, 5.58931;stroke-dashoffset:0"
+       x="508.15472"
+       y="261.15756"
+       id="text103"><tspan
+         sodipodi:role="line"
+         id="tspan103"
+         style="stroke-width:2.79465"
+         x="508.15472"
+         y="261.15756">Division horizontale</tspan></text>
   </g>
 </svg>
