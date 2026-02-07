@@ -7,6 +7,11 @@ module I3D
       def initialize(epaisseur, jeu)
         @epaisseur = epaisseur
         @jeu = jeu
+        @instance = nil
+      end
+
+      def erase()
+        @instance.erase!
       end
 
       def tracer(largeur, hauteur, position)
@@ -25,7 +30,7 @@ module I3D
         face.pushpull(@epaisseur)
         rotation = 0
         self.positionner(instance, rotation, position)
-        return instance
+        @instance = instance
       end
 
       def appliquerTexture(instance)
@@ -53,6 +58,25 @@ module I3D
         instance.material = mat
         instance.name = "Vitrage"
         instance.entities.each { |e| e.material = mat if e.respond_to?(:material=) }
+        return instance
+      end
+    end
+
+    class RemplissageVide < Remplissage
+      def initialize()
+        super(30.mm, 0)
+        @instance = nil
+      end
+
+      def appliquerTexture(instance)
+        materials = Sketchup.active_model.materials
+        mat = materials["Vide"] || materials.add("Vide")
+        mat.alpha = 0.5
+        mat.color = Sketchup::Color.new(40, 120, 12)
+        
+        instance.material = mat
+        instance.name = "Vide"
+        # instance.entities.each { |e| e.material = mat if e.respond_to?(:material=) }
         return instance
       end
     end

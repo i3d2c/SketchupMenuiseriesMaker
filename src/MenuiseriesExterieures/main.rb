@@ -18,25 +18,25 @@ require 'MenuiseriesExterieures/Remplissages'
 
 module I3D
   module MenuiseriesExterieures
-    @cochonnet = 3.cm
-    @boisEp = 6.3.cm
-    @boisLarg = 8.6.cm
-    @boisBatiLarg = 8.6.cm
-    @bateeEp = 4.5.cm
-    @bateeLarg = 1.8.cm
-    @jointRainEp = 0.3.cm
-    @jointRainProf = 0.6.cm
-    @jeu = 0.3.cm
-    @EpVerre = 2.4.cm
-    @jeuVerre = 0.5.cm
-    @ref = ""
-    @tableauLarg = 85.cm
-    @tableauHaut = 200.cm
-    @imposteHauteur = 50.cm
-    @allegeHauteur = 50.cm
-    @nombreOuvrant = 1
+    def self.prompt()
+      cochonnet = 3.cm
+      boisEp = 6.3.cm
+      boisLarg = 8.6.cm
+      boisBatiLarg = 8.6.cm
+      bateeEp = 4.5.cm
+      bateeLarg = 1.8.cm
+      jointRainEp = 0.3.cm
+      jointRainProf = 0.6.cm
+      jeu = 0.3.cm
+      epVerre = 2.4.cm
+      jeuVerre = 0.5.cm
+      ref = ""
+      tableauLarg = 85.cm
+      tableauHaut = 200.cm
+      imposteHauteur = 50.cm
+      allegeHauteur = 50.cm
+      nombreOuvrant = 1
 
-    def self.prompt
       prompts = [
         "Cochonnet :", 
         "Epaisseur bois :", 
@@ -59,23 +59,23 @@ module I3D
 
       # Conversion pour affichage (en mm)
       defaults = [
-        @cochonnet.to_mm.round(), 
-        @boisEp.to_mm.round(),
-        @boisLarg.to_mm.round(),
-        @boisBatiLarg.to_mm.round(),
-        @bateeEp.to_mm.round(),
-        @bateeLarg.to_mm.round(),
-        @jointRainEp.to_mm.round(),
-        @jointRainProf.to_mm.round(),
-        @jeu.to_mm.round(),
-        @EpVerre.to_mm.round(),
-        @jeuVerre.to_mm.round(),
-        @ref, 
-        @tableauLarg.to_mm.round(),
-        @tableauHaut.to_mm.round(),
-        @imposteHauteur.to_mm.round(),
-        @allegeHauteur.to_mm.round(),
-        @nombreOuvrant.to_i, 
+        cochonnet.to_mm.round(), 
+        boisEp.to_mm.round(),
+        boisLarg.to_mm.round(),
+        boisBatiLarg.to_mm.round(),
+        bateeEp.to_mm.round(),
+        bateeLarg.to_mm.round(),
+        jointRainEp.to_mm.round(),
+        jointRainProf.to_mm.round(),
+        jeu.to_mm.round(),
+        epVerre.to_mm.round(),
+        jeuVerre.to_mm.round(),
+        ref, 
+        tableauLarg.to_mm.round(),
+        tableauHaut.to_mm.round(),
+        imposteHauteur.to_mm.round(),
+        allegeHauteur.to_mm.round(),
+        nombreOuvrant.to_i, 
       ]
       listes = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "0|1|2"]
 
@@ -114,18 +114,20 @@ module I3D
       seuil = Seuil.new()
 
       if isPorteFenetre then
-        bati = BatiPorteFenetre.new(profilBati, pose, seuil)
+        @bati = BatiPorteFenetre.new(profilBati, pose, seuil)
       else
-        bati = BatiFenetre.new(profilBati, pose)
+        @bati = BatiFenetre.new(profilBati, pose)
       end
       
-      @menuiserie = Menuiserie.new(bati, jeu)
-
-      @menuiserie.tracer()
+      @bati.tracer()
     end
 
-    def self.getMenuiserie()
-      return @menuiserie
+    def self.splitVertical(x)
+      return @bati.ouverture.divisionVerticale(x)
+    end
+
+    def self.splitHorizontal(x)
+      return @bati.ouverture.divisionHorizontale(x)
     end
 
     unless file_loaded?(__FILE__)
