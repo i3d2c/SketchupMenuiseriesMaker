@@ -2,7 +2,7 @@ module I3D
   module MenuiseriesExterieures
 
     class Remplissage
-      attr_accessor :epaisseur, :jeu
+      attr_accessor :epaisseur, :jeu, :instance
 
       def initialize(epaisseur, jeu)
         @epaisseur = epaisseur
@@ -11,7 +11,9 @@ module I3D
       end
 
       def erase()
-        @instance.erase!
+        unless @instance == nil
+          @instance.erase!
+        end
       end
 
       def tracer(largeur, hauteur, position)
@@ -31,6 +33,7 @@ module I3D
         rotation = 0
         self.positionner(instance, rotation, position)
         @instance = instance
+        return @instance
       end
 
       def appliquerTexture(instance)

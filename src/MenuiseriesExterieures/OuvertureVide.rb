@@ -19,6 +19,16 @@ module I3D
 
       def tracer()
         @remplissage.tracer(@largeur, @hauteur, @position)
+        @remplissage.instance.set_attribute "I3DMenuiseries", "estUneOuvertureVide", true
+        @remplissage.instance.set_attribute "I3DMenuiseries", "hauteur", @hauteur.to_mm
+        @remplissage.instance.set_attribute "I3DMenuiseries", "largeur", @largeur.to_mm
+        @remplissage.instance.set_attribute "I3DMenuiseries", "boisLargeur", @profil.bois.largeur.to_mm
+        @remplissage.instance.set_attribute "I3DMenuiseries", "boisEpaisseur", @profil.bois.epaisseur.to_mm
+        @remplissage.instance.set_attribute "I3DMenuiseries", "bateeLargeur", @profil.batee.largeur.to_mm
+        @remplissage.instance.set_attribute "I3DMenuiseries", "bateeEpaisseur", @profil.batee.epaisseur.to_mm
+        @remplissage.instance.set_attribute "I3DMenuiseries", "jointRainProf", @profil.joint.profondeurRainure.to_mm
+        @remplissage.instance.set_attribute "I3DMenuiseries", "jointRainEp", @profil.joint.epaisseurRainure.to_mm
+        @remplissage.instance.set_attribute "I3DMenuiseries", "position", @position
       end
 
       def divisionVerticale(distanceAGauche, tracer=true)

@@ -14,10 +14,9 @@ require 'MenuiseriesExterieures/OuvertureVide'
 require 'MenuiseriesExterieures/Remplissages'
 
 
-@toto = nil
-
 module I3D
   module MenuiseriesExterieures
+
     def self.prompt()
       cochonnet = 3.cm
       boisEp = 6.3.cm
@@ -129,6 +128,49 @@ module I3D
     def self.splitHorizontal(x)
       return @bati.ouverture.divisionHorizontale(x)
     end
+
+    class MenuiserieTool
+      def getMenu(menu, flags, x, y, view)
+        ph = view.pick_helper(x, y)
+        entity = ph.best_picked        
+        
+        if entity then
+          attribute_dictionary = entity.attribute_dictionaries["I3DMenuiseries"]
+          puts attribute_dictionary
+          if attribute_dictionary && attribute_dictionary["estUneOuvertureVide"] then
+            ouvertureVide = attribute_dictionary["ouvertureVide"]
+            hauteur = attribute_dictionary["hauteur"]
+            largeur = attribute_dictionary["largeur"]
+            position = attribute_dictionary["position"]
+            boisLargeur = attribute_dictionary["boisLargeur"]
+            boisEpaisseur = attribute_dictionary["boisEpaisseur"]
+            bateeLargeur = attribute_dictionary["bateeLargeur"]
+            bateeEpaisseur = attribute_dictionary["bateeEpaisseur"]
+            jointRainProf = attribute_dictionary["jointRainProf"]
+            jointRainEp = attribute_dictionary["jointRainEp"]
+            bois = Bois.new(boisEpaisseur, boisLargeur)
+            batee = Batee.new(bateeEpaisseur, bateeLargeur)
+            joint = Joint.new(jointRainEp, jointRainProf)
+            profil = Profil.new(joint, batee, bois)
+            
+            view.model.selection.clear
+            view.model.selection.add(entity)
+
+            ouvertureVide = OuvertureVide.new(profil, hauteur, largeur, position)
+
+            menu.add_item("Division verticale") {
+              entity.erase!
+              ouvertureVide.divisionVerticale(250.mm)
+            }
+            menu.add_item("Division horizontale") {
+              entity.erase!
+              ouvertureVide.divisionHorizontale(1200.mm)
+            }
+          end
+        end
+      end
+    end
+    Sketchup.active_model.select_tool(MenuiserieTool.new)
 
     unless file_loaded?(__FILE__)
       menu = UI.menu('Plugins')
