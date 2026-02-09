@@ -9,6 +9,14 @@ module I3D
         @bois = bois
       end
 
+      def largeurBoisSansBatee()
+        return @bois.largeur - @batee.largeur
+      end
+
+      def largeurBoisSans2Batees()
+        return @bois.largeur - 2 * @batee.largeur
+      end
+
       def tracerSimplebatee(longueur)
         model = Sketchup.active_model
         definition = model.definitions.add("Profil 1")

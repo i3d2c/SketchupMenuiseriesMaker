@@ -136,7 +136,6 @@ module I3D
         
         if entity then
           attribute_dictionary = entity.attribute_dictionaries["I3DMenuiseries"]
-          puts attribute_dictionary
           if attribute_dictionary && attribute_dictionary["estUneOuvertureVide"] then
             ouvertureVide = attribute_dictionary["ouvertureVide"]
             hauteur = attribute_dictionary["hauteur"]
@@ -156,18 +155,40 @@ module I3D
             view.model.selection.clear
             view.model.selection.add(entity)
 
-            ouvertureVide = OuvertureVide.new(profil, hauteur, largeur, position)
+            ouvertureVide = OuvertureVide.new(profil, hauteur, largeur, position, entity)
 
             menu.add_item("Division verticale") {
-              entity.erase!
-              ouvertureVide.divisionVerticale(250.mm)
+              result = promptDivision(ouvertureVide.largeurMaxDeDecoupe(), "partie gauche")
+              if result > 0
+                ouvertureVide.divisionVerticale(result)
+              end
             }
             menu.add_item("Division horizontale") {
-              entity.erase!
-              ouvertureVide.divisionHorizontale(1200.mm)
+              result = promptDivision(ouvertureVide.hauteurMaxDeDecoupe(), "partie haute")
+              if result > 0
+                ouvertureVide.divisionHorizontale(result)
+              end
             }
           end
         end
+      end
+
+      def promptDivision(valeurMax, texte)
+        valeurDefaut = valeurMax.to_mm / 2
+        prompts = [
+          "Dimension #{texte} (max #{valeurMax.to_mm.round().to_s}mm) :", 
+        ]
+
+        defaults = [
+          valeurDefaut.round(), 
+        ]
+
+        results = UI.inputbox(prompts, defaults, "Dimension de la division")
+        puts results
+        if results == false then
+          return 0
+        end
+        return results[0].mm
       end
     end
     Sketchup.active_model.select_tool(MenuiserieTool.new)
