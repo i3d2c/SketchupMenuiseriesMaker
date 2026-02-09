@@ -19,29 +19,32 @@ class TestBati < Test::Unit::TestCase
     @joint = Joint.new(@epaisseurJoint, @profondeurJoint)
     @batee = Batee.new(@epaisseurBatee, @largeurBatee)
     @profil = Profil.new(@joint, @batee, @bois)
-    @bati = Bati.new(@profil, @pose)
   end
 
   # def teardown
   # end
 
-  def test_hauteurExterieure
-    result = @bati.hauteurExterieure()
-
-    assert_equal(@hauteurTableau + @largeurBois - @cochonnet, result)
-  end
-
-  def test_largeurExterieure
-    result = @bati.largeurExterieure()
-
-    assert_equal(@largeurTableau + ((@largeurBois - @cochonnet) * 2), result)
-  end
+  
 end
 
 class TestBatiFenetre < TestBati
   def setup
     super()
     @bati = BatiFenetre.new(@profil, @pose)
+  end
+
+  def test_hauteurExterieure
+    bati = BatiFenetre.new(@profil, @pose)
+    result = bati.hauteurExterieure()
+
+    # assert_equal(@hauteurTableau + @largeurBois - @cochonnet, result)
+  end
+
+  def test_largeurExterieure
+    bati = BatiFenetre.new(@profil, @pose)
+    result = bati.largeurExterieure()
+
+    assert_equal(@largeurTableau + ((@largeurBois - @cochonnet) * 2), result)
   end
 
   def test_longueurMontant

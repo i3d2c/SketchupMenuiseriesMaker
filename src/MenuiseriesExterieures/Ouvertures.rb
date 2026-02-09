@@ -2,55 +2,100 @@ require_relative './Structure'
 
 module I3D
   module MenuiseriesExterieures
-    class Ouvrant < Structure
 
-      def initialize(profil, remplissage)
+    class Ouverture < Structure
+      def initialize(profil, details, hauteur, largeur, position)
         super(profil)
-        @remplissage = remplissage
+        @details = details
+        @hauteur = hauteur
+        @largeur = largeur
+        @position = position
+      end
+    end
+
+    class Fixe < Ouverture
+      def initialize(profil, details, hauteur, largeur, position)
+        super(profil, details, hauteur, largeur, position)
+        @remplissage = RemplissageVitrage.new(details.epVitrage, detail.jeuVitrage, hauteur, largeur, position)
       end
 
-      def tracer(hauteur, largeur)
-        self.tracerMontantGauche(hauteur, largeur)
-        self.tracerMontantDroit(hauteur, largeur)
-        self.tracerTraverseHaute(hauteur, largeur)
-        self.tracerTraverseBasse(hauteur, largeur)
+      def tracer()
+        @remplissage.tracer()
+      end
+    end
+
+    class Ouvrant < Ouverture
+      def initialize(profil, details, hauteur, largeur, position)
+        super(profil, details, hauteur, largeur, position)
+        @ouverture = OuvertureVide.new(profil, details, self.hauteurVitrage(), self.largeurVitrage(), position)
       end
 
-      def tracerMontantGauche(hauteur, largeur)
-        instance = @profil.tracerDoubleBateesOpposees(hauteur - 2 * @profil.bois.largeur)
-        rotation = 180
-        destination = Geom::Point3d.new(largeur / 2 - @profil.bois.largeur / 2 + @profil.batee.largeur, 0, 0)
-        self.positionner(instance, rotation, destination)
-        return instance
+      def largeurVitrage()
+        return @largeur - 2 * @details.jeuOuvrant - 2 * @profil.largeurBoisSans2Batees()
       end
 
-      def tracerMontantDroit(hauteur, largeur)
-        instance = @profil.tracerDoubleBateesOpposees(hauteur - 2 * @profil.bois.largeur)
-        rotation = 0
-        destination = Geom::Point3d.new(-largeur / 2 + @profil.bois.largeur / 2 - @profil.batee.largeur, 0, 0)
-        self.positionner(instance, rotation, destination)
-        return instance
+      def hauteurVitrage()
+        return @hauteur - 2 * @details.jeuOuvrant - 2 * @profil.largeurBoisSans2Batees()
       end
 
-      def tracerTraverseHaute(hauteur, largeur)
-        instance = @profil.tracerDoubleBateesOpposees(largeur + 2 * @profil.batee.largeur)
-        rotation = 90
-        destination = Geom::Point3d.new(0, 0, hauteur / 2 - @profil.bois.largeur / 2 - @profil.batee.largeur)
-        self.positionner(instance, rotation, destination)
-        return instance
-      end
-
-      def tracerTraverseBasse(hauteur, largeur)
-        instance = @profil.tracerDoubleBateesOpposees(largeur + 2 * @profil.batee.largeur)
-        rotation = -90
-        destination = Geom::Point3d.new(0, 0, - hauteur / 2 + @profil.bois.largeur / 2 + @profil.batee.largeur)
-        self.positionner(instance, rotation, destination)
-        return instance
+      def tracer()
+        self.tracerMontantGauche()
+        self.tracerMontantDroit()
+        self.tracerTraverseHaute()
+        self.tracerTraverseBasse()
+        @ouverture.tracer()
       end
     end
 
 
     class OuvrantFenetre < Ouvrant
+      def tracerMontantGauche()
+        instance = @profil.tracerDoubleBateesOpposees(@hauteur - 2 * @profil.largeurBoisSans2Batees() - 2 * @details.jeuOuvrant)
+        rotation = 180
+        destination = [
+          @position[0] + @largeur / 2 - @profil.bois.largeur / 2 + @profil.batee.largeur - @details.jeuOuvrant,
+          @position[1] + (@profil.bois.epaisseur - @profil.batee.epaisseur) + @profil.joint.epaisseurRainure,
+          @position[2]
+        ]
+        self.positionner(instance, rotation, destination)
+        return instance
+      end
+
+      def tracerMontantDroit()
+        instance = @profil.tracerDoubleBateesOpposees(@hauteur - 2 * @profil.largeurBoisSans2Batees() - 2 * @details.jeuOuvrant)
+        rotation = 0
+        destination =[
+          @position[0] - @largeur / 2 + @profil.bois.largeur / 2  - @profil.batee.largeur + @details.jeuOuvrant,
+          @position[1] + (@profil.bois.epaisseur - @profil.batee.epaisseur) + @profil.joint.epaisseurRainure,
+          @position[2]
+        ]
+        self.positionner(instance, rotation, destination)
+        return instance
+      end
+
+      def tracerTraverseHaute()
+        instance = @profil.tracerDoubleBateesOpposees(@largeur + 2 * @profil.batee.largeur - 2 * @details.jeuOuvrant)
+        rotation = 90
+        destination =[
+          @position[0],
+          @position[1] + (@profil.bois.epaisseur - @profil.batee.epaisseur) + @profil.joint.epaisseurRainure,
+          @position[2] + @hauteur / 2 - @profil.bois.largeur / 2  + @profil.batee.largeur - @details.jeuOuvrant
+        ]
+        self.positionner(instance, rotation, destination)
+        return instance
+      end
+
+      def tracerTraverseBasse()
+        instance = @profil.tracerDoubleBateesOpposees(@largeur + 2 * @profil.batee.largeur - 2 * @details.jeuOuvrant)
+        rotation = -90
+        destination =[
+          @position[0],
+          @position[1] + (@profil.bois.epaisseur - @profil.batee.epaisseur) + @profil.joint.epaisseurRainure,
+          @position[2] - @hauteur / 2 + @profil.bois.largeur / 2  - @profil.batee.largeur + @details.jeuOuvrant
+        ]
+        self.positionner(instance, rotation, destination)
+        return instance
+      end
     end
 
 

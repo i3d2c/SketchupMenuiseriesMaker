@@ -9,6 +9,12 @@ module I3D
         @bois = bois
       end
 
+      def initialize(jointRainEp, jointRainProf, bateeEp, bateeLarg, boisEp, boisLarg)
+        @joint = Joint.new(jointRainEp, jointRainProf)
+        @batee = Batee.new(bateeEp, bateeLarg)
+        @bois = Bois.new(boisEp, boisLarg)
+      end
+
       def largeurBoisSansBatee()
         return @bois.largeur - @batee.largeur
       end

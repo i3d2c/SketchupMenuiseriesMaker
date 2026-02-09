@@ -8,7 +8,7 @@ module I3D
       end
 
       def positionner(instance, rotation, position)
-        translation_vector = position - instance.bounds.center
+        translation_vector = Geom::Point3d.new(position) - instance.bounds.center
         instance.transform!(Geom::Transformation.new(translation_vector))
         point = instance.bounds.center
         axis = [0, 1, 0]

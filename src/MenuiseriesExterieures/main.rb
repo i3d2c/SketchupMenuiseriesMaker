@@ -12,6 +12,7 @@ require 'MenuiseriesExterieures/Batis'
 require 'MenuiseriesExterieures/Ouvertures'
 require 'MenuiseriesExterieures/OuvertureVide'
 require 'MenuiseriesExterieures/Remplissages'
+require 'MenuiseriesExterieures/Details'
 
 
 module I3D
@@ -32,9 +33,6 @@ module I3D
       ref = ""
       tableauLarg = 85.cm
       tableauHaut = 200.cm
-      imposteHauteur = 50.cm
-      allegeHauteur = 50.cm
-      nombreOuvrant = 1
 
       prompts = [
         "Cochonnet :", 
@@ -50,10 +48,7 @@ module I3D
         "Jeu vitrage/bois :", 
         "Reference:", 
         "Largeur Tableau:", 
-        "Hauteur Tableau:", 
-        "Hauteur imposte:", 
-        "Hauteur allege:", 
-        "Nombre d'Ouvrant:", 
+        "Hauteur Tableau:" 
       ]
 
       # Conversion pour affichage (en mm)
@@ -71,14 +66,10 @@ module I3D
         jeuVerre.to_mm.round(),
         ref, 
         tableauLarg.to_mm.round(),
-        tableauHaut.to_mm.round(),
-        imposteHauteur.to_mm.round(),
-        allegeHauteur.to_mm.round(),
-        nombreOuvrant.to_i, 
+        tableauHaut.to_mm.round()
       ]
-      listes = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "0|1|2"]
 
-      results = UI.inputbox(prompts, defaults, listes, "Dimensions des profils bois")
+      results = UI.inputbox(prompts, defaults, "Dimensions des profils bois")
       
       return results
     end
@@ -87,35 +78,29 @@ module I3D
       dimensions = self.prompt()
       self.tracerMenuiserie(dimensions[0].mm, dimensions[1].mm, dimensions[2].mm, dimensions[3].mm, dimensions[4].mm,
       dimensions[5].mm, dimensions[6].mm, dimensions[7].mm, dimensions[8].mm, dimensions[9].mm, dimensions[10].mm, dimensions[11],
-      dimensions[12].mm, dimensions[13].mm, dimensions[14].mm, dimensions[15].mm, dimensions[16], false)
+      dimensions[12].mm, dimensions[13].mm, false)
     end
 
     def self.creerPorteFenetre()
       dimensions = self.prompt()
       self.tracerMenuiserie(dimensions[0].mm, dimensions[1].mm, dimensions[2].mm, dimensions[3].mm, dimensions[4].mm,
       dimensions[5].mm, dimensions[6].mm, dimensions[7].mm, dimensions[8].mm, dimensions[9].mm, dimensions[10].mm, dimensions[11],
-      dimensions[12].mm, dimensions[13].mm, dimensions[14].mm, dimensions[15].mm, dimensions[16], true)
+      dimensions[12].mm, dimensions[13].mm, true)
     end
 
     def self.tracerMenuiserie(cochonnet, boisEp, boisLarg, boisBatiLarg, bateeEp, bateeLarg,
-      jointRainEp, jointRainProf, jeu, epVerre, jeuVerre, ref, tableauLarg, tableauHaut,
-      imposteHauteur, allegeHauteur, nombreOuvrant, isPorteFenetre)
+      jointRainEp, jointRainProf, jeu, epVerre, jeuVerre, ref, tableauLarg, tableauHaut, isPorteFenetre)
 
       tableau = Tableau.new(tableauLarg, tableauHaut)
       pose = Pose.new(tableau, cochonnet)
-      batee = Batee.new(bateeEp, bateeLarg)
-      joint = Joint.new(jointRainEp, jointRainProf)
-      boisBati = Bois.new(boisEp, boisBatiLarg)
-      # boisOuvrant = Bois.new(boisEp, boisLarg)
-      profilBati = Profil.new(joint, batee, boisBati)
-      # profilOuvrant = Profil.new(joint, batee, boisOuvrant)
-      # vitrage = RemplissageVitrage.new(epVerre, jeuVerre)
+      profilBati = Profil.new(jointRainEp, jointRainProf, bateeEp, bateeLarg, boisEp, boisLarg)
+      details = Details.new(jeuVerre, epVerre, jeu)
       seuil = Seuil.new()
 
       if isPorteFenetre then
-        @bati = BatiPorteFenetre.new(profilBati, pose, seuil)
+        @bati = BatiPorteFenetre.new(profilBati, pose, details, seuil)
       else
-        @bati = BatiFenetre.new(profilBati, pose)
+        @bati = BatiFenetre.new(profilBati, pose, details)
       end
       
       @bati.tracer()
@@ -141,21 +126,25 @@ module I3D
             hauteur = attribute_dictionary["hauteur"]
             largeur = attribute_dictionary["largeur"]
             position = attribute_dictionary["position"]
-            boisLargeur = attribute_dictionary["boisLargeur"]
-            boisEpaisseur = attribute_dictionary["boisEpaisseur"]
-            bateeLargeur = attribute_dictionary["bateeLargeur"]
-            bateeEpaisseur = attribute_dictionary["bateeEpaisseur"]
-            jointRainProf = attribute_dictionary["jointRainProf"]
-            jointRainEp = attribute_dictionary["jointRainEp"]
-            bois = Bois.new(boisEpaisseur, boisLargeur)
-            batee = Batee.new(bateeEpaisseur, bateeLargeur)
-            joint = Joint.new(jointRainEp, jointRainProf)
-            profil = Profil.new(joint, batee, bois)
+
+            profil = Profil.new(
+              attribute_dictionary["jointRainEp"],
+              attribute_dictionary["jointRainProf"],
+              attribute_dictionary["bateeEpaisseur"],
+              attribute_dictionary["bateeLargeur"],
+              attribute_dictionary["boisEpaisseur"],
+              attribute_dictionary["boisLargeur"]
+            )
+            details = Details.new(
+              attribute_dictionary["jeuVitrage"],
+              attribute_dictionary["epVitrage"],
+              attribute_dictionary["jeuOuvrant"]
+            )
             
             view.model.selection.clear
             view.model.selection.add(entity)
 
-            ouvertureVide = OuvertureVide.new(profil, hauteur, largeur, position, entity)
+            ouvertureVide = OuvertureVide.new(profil, details, hauteur, largeur, position, entity)
 
             menu.add_item("Division verticale") {
               result = promptDivision(ouvertureVide.largeurMaxDeDecoupe(), "partie gauche")
@@ -169,22 +158,21 @@ module I3D
                 ouvertureVide.divisionHorizontale(result)
               end
             }
+            menu.add_item("Remplir avec fenêtre simple ouvrant") {
+              ouvertureVide.remplirAvecOuvrantFenetre()
+            }
+            menu.add_item("Remplir avec vitrage fixe") {
+              ouvertureVide.remplirAvecVitrageFixe()
+            }
           end
         end
       end
 
       def promptDivision(valeurMax, texte)
         valeurDefaut = valeurMax.to_mm / 2
-        prompts = [
-          "Dimension #{texte} (max #{valeurMax.to_mm.round().to_s}mm) :", 
-        ]
-
-        defaults = [
-          valeurDefaut.round(), 
-        ]
-
+        prompts = [ "Dimension #{texte} (max #{valeurMax.to_mm.round().to_s}mm) :" ]
+        defaults = [ valeurDefaut.round() ]
         results = UI.inputbox(prompts, defaults, "Dimension de la division")
-        puts results
         if results == false then
           return 0
         end

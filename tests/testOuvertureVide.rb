@@ -23,8 +23,8 @@ class TestOuvertureVide < Test::Unit::TestCase
 
     ouverture.divisionVerticale(1500, false)
 
-    assert_nil(ouverture.ouverture0)
     assert_nil(ouverture.ouverture1)
+    assert_nil(ouverture.ouverture2)
   end
 
   def test_divisionVerticale_ne_fait_rien_si_largeur_negative()
@@ -32,8 +32,8 @@ class TestOuvertureVide < Test::Unit::TestCase
 
     ouverture.divisionVerticale(-500, false)
 
-    assert_nil(ouverture.ouverture0)
     assert_nil(ouverture.ouverture1)
+    assert_nil(ouverture.ouverture2)
   end
 
   def test_divisionVerticale_ajoute_ouvertures()
@@ -41,12 +41,12 @@ class TestOuvertureVide < Test::Unit::TestCase
 
     ouverture.divisionVerticale(500, false)
 
-    assert_equal(ouverture.ouverture0.hauteur, 2000)
-    assert_equal(ouverture.ouverture0.largeur, 500)
-    assert_equal(ouverture.ouverture0.position, [-250, 2, 3])
     assert_equal(ouverture.ouverture1.hauteur, 2000)
-    assert_equal(ouverture.ouverture1.largeur, 460)
-    assert_equal(ouverture.ouverture1.position, [270, 2, 3])
+    assert_equal(ouverture.ouverture1.largeur, 500)
+    assert_equal(ouverture.ouverture1.position, [250, 2, 3])
+    assert_equal(ouverture.ouverture2.hauteur, 2000)
+    assert_equal(ouverture.ouverture2.largeur, 460)
+    assert_equal(ouverture.ouverture2.position, [-270, 2, 3])
   end
 
   def test_divisionHorizontale_ne_fait_rien_si_hauteur_trop_haute()
@@ -54,8 +54,8 @@ class TestOuvertureVide < Test::Unit::TestCase
 
     ouverture.divisionHorizontale(2500, false)
 
-    assert_nil(ouverture.ouverture0)
     assert_nil(ouverture.ouverture1)
+    assert_nil(ouverture.ouverture2)
   end
 
   def test_divisionHorizontale_ne_fait_rien_si_hauteur_negative()
@@ -63,21 +63,21 @@ class TestOuvertureVide < Test::Unit::TestCase
 
     ouverture.divisionHorizontale(-500, false)
 
-    assert_nil(ouverture.ouverture0)
     assert_nil(ouverture.ouverture1)
+    assert_nil(ouverture.ouverture2)
   end
 
   def test_divisionHorizontale_ajoute_ouvertures()
-    ouverture = OuvertureVide.new(@profil, 2000, 1000, [1, 0, 3])
+    ouverture = OuvertureVide.new(@profil, 2000, 1000, [1, 2, 0])
 
     ouverture.divisionHorizontale(500, false)
 
-    assert_equal(ouverture.ouverture0.hauteur, 500)
-    assert_equal(ouverture.ouverture0.largeur, 1000)
-    assert_equal(ouverture.ouverture0.position, [1, 750, 3])
-    assert_equal(ouverture.ouverture1.hauteur, 1460)
+    assert_equal(ouverture.ouverture1.hauteur, 500)
     assert_equal(ouverture.ouverture1.largeur, 1000)
-    assert_equal(ouverture.ouverture1.position, [1, -270, 3])
+    assert_equal(ouverture.ouverture1.position, [1, 2, 750])
+    assert_equal(ouverture.ouverture2.hauteur, 1460)
+    assert_equal(ouverture.ouverture2.largeur, 1000)
+    assert_equal(ouverture.ouverture2.position, [1, 2, -270])
   end
 
 end

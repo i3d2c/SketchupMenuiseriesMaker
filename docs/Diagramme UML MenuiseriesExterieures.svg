@@ -29,8 +29,8 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:zoom="0.82063958"
-     inkscape:cx="976.67724"
-     inkscape:cy="736.62058"
+     inkscape:cx="1080.8643"
+     inkscape:cy="742.71338"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
@@ -3038,13 +3038,7 @@
        fill="#000000"
        font-family="Helvetica"
        font-size="12px"
-       id="g198">
-      <text
-         cell-id="null"
-         x="842.5"
-         y="579.5"
-         id="text197">- remplissage : Remplissage</text>
-    </g>
+       id="g198" />
   </g>
   <g
      shape-node=""
@@ -3076,7 +3070,7 @@
          cell-id="null"
          x="842.5"
          y="597.5"
-         id="text200">+ tracer(hauteur, largeur, position)</text>
+         id="text200">+ tracer()</text>
     </g>
   </g>
   <g
@@ -3109,7 +3103,7 @@
          cell-id="null"
          x="842.5"
          y="613.5"
-         id="text203">+ initialize(profil, remplissage, jeu)</text>
+         id="text203">+ initialize(profil, jeu)</text>
     </g>
   </g>
   <g
@@ -3487,7 +3481,7 @@
          cell-id="0Jhlrr9e50fPiSLbxRTX-102"
          x="1151"
          y="520.5"
-         id="text221">- ouverture0 : Ouverture</text>
+         id="text221">- ouverture1 : Ouverture</text>
     </g>
   </g>
   <g
@@ -3642,7 +3636,7 @@
          cell-id="null"
          x="1151"
          y="536.5"
-         id="text236">- ouverture1 : Ouverture</text>
+         id="text236">- ouverture2 : Ouverture</text>
     </g>
   </g>
   <g
@@ -4135,7 +4129,7 @@
      shape-node=""
      text-node=""
      id="g240"
-     transform="translate(0,12)">
+     transform="translate(0,1.6601607)">
     <g
        cell-id="null"
        fill="#000000"

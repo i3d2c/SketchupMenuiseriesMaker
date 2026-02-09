@@ -4,9 +4,12 @@ module I3D
     class Remplissage
       attr_accessor :epaisseur, :jeu, :instance
 
-      def initialize(epaisseur, jeu)
+      def initialize(epaisseur, jeu, hauteur, largeur, position)
         @epaisseur = epaisseur
         @jeu = jeu
+        @hauteur = hauteur
+        @largeur = largeur
+        @position = position
         @instance = nil
       end
 
@@ -16,9 +19,9 @@ module I3D
         end
       end
 
-      def tracer(largeur, hauteur, position)
-        largeur = largeur - 2 * @jeu
-        hauteur = hauteur - 2 * @jeu
+      def tracer()
+        largeur = @largeur - 2 * @jeu
+        hauteur = @hauteur - 2 * @jeu
         model = Sketchup.active_model
         points = [
           Geom::Point3d.new(0, 0, 0),
@@ -31,7 +34,7 @@ module I3D
         face = instance.entities.add_face(points)
         face.pushpull(@epaisseur)
         rotation = 0
-        self.positionner(instance, rotation, position)
+        self.positionner(instance, rotation, @position)
         @instance = instance
         return @instance
       end
@@ -41,7 +44,7 @@ module I3D
       end
 
       def positionner(instance, rotation, position)
-        translation_vector = position - instance.bounds.center
+        translation_vector = Geom::Point3d.new(position) - instance.bounds.center
         instance.transform!(Geom::Transformation.new(translation_vector))
         point = instance.bounds.center
         axis = [0, 1, 0]
@@ -66,8 +69,8 @@ module I3D
     end
 
     class RemplissageVide < Remplissage
-      def initialize()
-        super(30.mm, 0)
+      def initialize(hauteur, largeur, position)
+        super(1, 0, hauteur, largeur, position)
         @instance = nil
       end
 
@@ -79,7 +82,6 @@ module I3D
         
         instance.material = mat
         instance.name = "Vide"
-        # instance.entities.each { |e| e.material = mat if e.respond_to?(:material=) }
         return instance
       end
     end
