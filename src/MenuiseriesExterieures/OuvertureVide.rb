@@ -120,6 +120,13 @@ module I3D
         vitrage = RemplissageVitrage.new(@details.epVitrage, @details.jeuVitrage, @hauteur, @largeur, @position)
         vitrage.tracer()
       end
+
+      def remplirAvecPanneauPlein()
+        @remplissage.erase!()
+        remplissageBois = RemplissageBois.new(@details.epVitrage, @details.jeuVitrage, @hauteur, @largeur, @position)
+        remplissageBois.tracer()
+      end
+
     end
   end
 end

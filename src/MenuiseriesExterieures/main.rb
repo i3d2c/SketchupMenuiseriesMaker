@@ -164,6 +164,9 @@ module I3D
             menu.add_item("Remplir avec vitrage fixe") {
               ouvertureVide.remplirAvecVitrageFixe()
             }
+            menu.add_item("Remplir avec panneau plein") {
+              ouvertureVide.remplirAvecPanneauPlein()
+            }
           end
         end
       end

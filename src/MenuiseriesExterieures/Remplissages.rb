@@ -68,6 +68,20 @@ module I3D
       end
     end
 
+    class RemplissageBois < Remplissage
+      def appliquerTexture(instance)
+        materials = Sketchup.active_model.materials
+        mat = materials["Vitrage"] || materials.add("Vitrage")
+        mat.alpha = 1
+        mat.color = Sketchup::Color.new(180, 180, 180)
+        
+        instance.material = mat
+        instance.name = "Bois plein"
+        instance.entities.each { |e| e.material = mat if e.respond_to?(:material=) }
+        return instance
+      end
+    end
+
     class RemplissageVide < Remplissage
       def initialize(hauteur, largeur, position)
         super(1, 0, hauteur, largeur, position)
