@@ -19,6 +19,10 @@ module I3D
         return @bois.largeur - @batee.largeur
       end
 
+      def epaisseurBoisSansBatee()
+        return @bois.epaisseur - @batee.epaisseur
+      end
+
       def largeurBoisSans2Batees()
         return @bois.largeur - 2 * @batee.largeur
       end

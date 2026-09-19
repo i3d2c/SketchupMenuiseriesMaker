@@ -27,6 +27,11 @@ module I3D
     class Ouvrant < Ouverture
       def initialize(profil, details, hauteur, largeur, position)
         super(profil, details, hauteur, largeur, position)
+        position = Geom::Point3d.new(position) + [
+          0,
+          0,
+          0
+        ]
         @ouverture = OuvertureVide.new(profil, details, self.hauteurVitrage(), self.largeurVitrage(), position)
       end
 

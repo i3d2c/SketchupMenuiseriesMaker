@@ -44,7 +44,7 @@ module I3D
       end
 
       def positionner(instance, rotation, position)
-        translation_vector = Geom::Point3d.new(position) - instance.bounds.center
+        translation_vector = Geom::Point3d.new(position) - instance.bounds.center + [0, 0, 0] #@epaisseur / 2, 0]
         instance.transform!(Geom::Transformation.new(translation_vector))
         point = instance.bounds.center
         axis = [0, 1, 0]
@@ -84,7 +84,7 @@ module I3D
 
     class RemplissageVide < Remplissage
       def initialize(hauteur, largeur, position)
-        super(1, 0, hauteur, largeur, position)
+        super(1.0, 0, hauteur, largeur, position)
         @instance = nil
       end
 

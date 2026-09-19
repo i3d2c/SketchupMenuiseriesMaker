@@ -34,7 +34,11 @@ module I3D
 
     class BatiFenetre < Bati
       def positionOuvertureVide()
-        return [0, 0, @profil.bois.largeur - @profil.batee.largeur]
+        return [
+          0,
+          @profil.bois.epaisseur / 2 - @profil.batee.epaisseur + @profil.joint.epaisseurRainure,
+          @profil.largeurBoisSansBatee()
+        ]
       end
 
       def hauteurExterieure()
